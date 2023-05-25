@@ -24,6 +24,8 @@ in {
     settings = {
       substituters = ["https://mitchellh-nixos-config.cachix.org"];
       trusted-public-keys = ["mitchellh-nixos-config.cachix.org-1:bjEbXJyLrL1HZZHBbO4QALnI5faYZppzkU4D2s0G8RQ="];
+      extra-trusted-substituters = ["https://cache.floxdev.com"];
+      extra-trusted-public-keys = ["flox-store-public-0:8c/B+kjIaQ+BloCmNkRUKwaVPFWkriSAd0JJvuDu4F0="];
     };
   };
 
@@ -72,7 +74,7 @@ in {
     dpi = 220;
 
     desktopManager = {
-      xterm.enable = false;
+      xterm.enable = true;
       wallpaper.mode = "fill";
     };
 
@@ -83,7 +85,7 @@ in {
       # AARCH64: For now, on Apple Silicon, we must manually set the
       # display resolution. This is a known issue with VMware Fusion.
       sessionCommands = ''
-        ${pkgs.xorg.xset}/bin/xset r rate 200 40
+	${pkgs.xorg.xset}/bin/xset r rate 200 40
       '';
     };
 
@@ -95,10 +97,10 @@ in {
   # Enable tailscale. We manually authenticate when we want with
   # "sudo tailscale up". If you don't use tailscale, you should comment
   # out or delete all of this.
-  services.tailscale.enable = true;
+  #services.tailscale.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.mutableUsers = false;
+  users.mutableUsers = true;
 
   # Manage fonts. We pull these from a secret directory since most of these
   # fonts require a purchase.
@@ -143,8 +145,8 @@ in {
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  services.openssh.settings.PasswordAuthentication = true;
-  services.openssh.settings.PermitRootLogin = "no";
+  services.openssh.passwordAuthentication = true;
+  services.openssh.permitRootLogin = "no";
 
   # Disable the firewall since we're in a VM and we want to make it
   # easy to visit stuff in here. We only use NAT networking anyways.

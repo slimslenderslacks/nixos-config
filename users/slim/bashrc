@@ -1,0 +1,147 @@
+alias ls='ls -GFt'
+alias gs='git status'
+alias ga='git add'
+alias gd='git diff'
+alias gc='git commit'
+alias ggraph='git log --all --decorate --oneline --graph'
+alias git-amend-no-edit='git commit -a --amend --no-edit'
+alias docker-clean-images='docker images -q | xargs docker rmi'
+alias docker-clean-containers='docker ps -aq | xargs docker rm'
+alias op-signin='eval $(op signin atomist)'
+alias op-export='eval $(export_secrets)'
+alias tag-list='git tag --list --sort=v:refname | tail -5'
+alias vi='nvim'
+alias vim='nvim'
+alias bb-repl='op-export && bb --nrepl-server -o'
+alias atm-token='eval $(atm-bb jwt-token)'
+alias atm-staging-token='eval $(atm-bb cli create-jwt --staging)'
+alias docs-build='docker run -it --rm -v "$PWD:/docs" squidfunk/mkdocs-material:5.3.3 build --strict'
+alias docs-test='docker run -it --rm -v "$PWD:/test" wjdp/htmltest:v0.12.0 htmltest'
+alias docs-serve='docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material:5.3.3'
+alias docker-pty='socat -d -d ~/Library/Containers/com.docker.docker/Data/debug-shell.sock pty,rawer'
+alias sign-file='ssh-keygen -Y sign -f ~/.ssh/id_rsa -n file'
+alias skill-simulate='docker run -v ${PWD}:/skill docker/atomist-simulate-tx'
+alias docker-vm='docker run -it --rm --privileged --pid=host justincormack/nsenter1'
+alias watchfs='docker run -it -v ${PWD}:/skill slimslenderslacks/fswatch /skill'
+alias local-skill='docker run --rm --init -it --add-host host.docker.internal:host-gateway -v ${PWD}:/skill -v /var/run/docker.sock:/var/run/docker.sock atomist/local-skill --pwd /skill --workspace ${TEAM} --apikey "$(< ~/.secrets/atomist-apikey)" --host-dir ${PWD} --watch'
+alias k="kubectl"
+alias d="docker"
+alias kn="kubens"
+alias a='export AWS_PROFILE=$(aws configure list-profiles | fzf)'
+alias ar='infra-cli aws init -y'
+alias al='infra-cli aws login -y'
+alias ac='eval $(aws configure export-credentials --format env)'
+alias aws-sso-init='infra-cli aws init'
+alias aws-sso-login='infra-cli aws login'
+alias aws-sso-temp-creds='eval $(aws configure export-credentials --format env)'
+alias eks='infra-cli aws configEks'
+alias dive='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -e DOCKER_API_VERSION=1.37 wagoodman/dive:latest'
+function verify-file {
+    ssh-keygen -Y verify -f ~/.ssh/allowed_signers -I $1 -n file -s $2 < $3
+}
+
+function daws-creds {
+  export AWS_PROFILE=SupplyChainEngineers-111664719423
+  aws sts get-caller-identity > /dev/null || aws sso login &&
+  aws sts get-caller-identity > /dev/null &&
+  JSON_BASEPATH="${HOME}/.aws/cli/cache"
+  json_file=$(ls -tr "${JSON_BASEPATH}" | tail -n1)
+  export AWS_ACCESS_KEY_ID=$(cat ${JSON_BASEPATH}/${json_file} | jq -r '.Credentials.AccessKeyId')
+  export AWS_SECRET_ACCESS_KEY=$(cat ${JSON_BASEPATH}/${json_file} | jq -r '.Credentials.SecretAccessKey')
+  export AWS_SESSION_TOKEN=$(cat ${JSON_BASEPATH}/${json_file} | jq -r '.Credentials.SessionToken')
+  echo "Exported AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN"
+}
+
+export IN_REPL=true
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH=~/gcp/google-cloud-sdk/bin:~/.local/bin/:$PATH
+export AWS_IAM_USER=jim
+export ATOMIST_ROOT=~/atomist
+export BB_SCRIPTS=/Users/slim/atmhq/bb_scripts
+export BB_LOCAL=TRUE
+export JWT_CREATOR="/Users/slim/atmhq/jwt-creator"
+export GPG_TTY=$(tty)
+
+function atm-bb {
+    export BB_WD=${PWD}
+    pushd $BB_SCRIPTS > /dev/null
+    bb cli "$@"
+    popd > /dev/null
+}
+
+#function docker-login-jimclark106 {
+  #cat ~/.secrets/dockerhub-jimclark106-pat | docker login -u jimclark106 --password-stdin
+#}
+
+# my bb-util tasks
+. ~/slimslenderslacks/bb-util/init.bash
+
+# completion whenever you run bb and your pwd as a bb.edn
+_bb_complete() {
+    # starting on line3 of tasks output, take the first field (which will be the task name)
+    # COMPREPLY+=(`bb-util tasks |tail -n +3 |cut -f1 -d ' '`)
+    COMPREPLY=( $(compgen -W "$(bb tasks |tail -n +3 |cut -f1 -d ' ')" -- ${COMP_WORDS[COMP_CWORD]}) );
+}
+# autocomplete filenames as well
+complete -F _bb_complete -o bashdefault -o default bb
+
+#function op_login {
+    #eval $(op signin --account atomist.1password.com)
+    #eval $(export_secrets)
+#}
+
+#function datomic_access {
+  #aws-creds $1 sts
+  #datomic client access production1
+#}
+
+#function start-staging-node {
+    #export GRAPHQL_ENDPOINT=https://automation-staging.atomist.services/graphql
+    #export IN_REPL=true
+    #node index.js
+#}
+
+#function staging {
+    #gcloud config set account jim@atomist.com
+    #gcloud config set project atomist-internal-staging
+    #gcloud container clusters get-credentials k8s-internal-staging-ae6cd4b --zone us-east1
+    #kubectl config use-context staging
+#}
+
+#function production {
+    #gcloud config set account jim@atomist.com
+    #gcloud config set project atm-internal-production
+    #gcloud container clusters get-credentials k8s-internal-production-3486583 --zone us-east1
+    #k config use-context gke_atm-internal-production_us-east1_k8s-internal-production-3486583
+    #k config set-context --current --namespace=api-production
+#}
+
+#function customer-skill-production {
+    #gcloud config set account jim@atomist.com
+    #gcloud config set project atomist-customer-skill-product
+#}
+
+#function personalsdm {
+    #gcloud config set account slimslenderslacks@gmail.com
+    #gcloud config set project personalsdm-216019
+#}
+
+#function title {
+    #export TITLE="$1"
+#}
+
+## npm completions
+##[ -f /Users/slim/.npm/npm.sh ] && source /Users/slim/.npm/npm.sh
+
+### completions
+
+##source $(brew --prefix)/etc/bash_completion
+##source ~/.minikube-completion
+source ~/atmhq/bb_scripts/completions.sh
+
+#function k-secret {
+    #k get secret $1 -o json | jq '.data.config' | xargs echo | base64 --decode | jq '.'
+#}
+
+#export PATH=~/datomic-cli:$PATH
+
