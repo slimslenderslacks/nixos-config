@@ -138,6 +138,8 @@ $ make vm/bootstrap0
 After the VM reboots, run the full bootstrap, this will finalize the
 NixOS customization using this configuration:
 
+(if using `vm-aarch64-utm`, clear the CD/DVD drive before rebooting)
+
 ```
 $ make vm/bootstrap
 ```

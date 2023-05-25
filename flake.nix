@@ -66,7 +66,7 @@
     nixosConfigurations.vm-aarch64-utm = mkVM "vm-aarch64-utm" rec {
       inherit overlays nixpkgs home-manager;
       system = "aarch64-linux";
-      user   = "mitchellh";
+      user   = "slim";
     };
 
     nixosConfigurations.vm-intel = mkVM "vm-intel" rec {
