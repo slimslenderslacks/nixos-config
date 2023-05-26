@@ -3,6 +3,12 @@
 {
   # https://github.com/nix-community/home-manager/pull/2408
   # environment.pathsToLink = [ "/share/fish" ];
+  
+  users.users.root = {
+    home = "/root";
+    shell = pkgs.bash;
+    initialPassword = "root";
+  };
 
   users.users.slim = {
     isNormalUser = true;

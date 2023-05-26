@@ -1,7 +1,7 @@
 # Connectivity info for Linux VM
 NIXADDR ?= unset
 NIXPORT ?= 22
-NIXUSER ?= mitchellh
+NIXUSER ?= slim
 
 # Get the path to this Makefile and directory
 MAKEFILE_DIR := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
@@ -73,7 +73,7 @@ vm/bootstrap0:
 			services.openssh.permitRootLogin = \"yes\";\n \
 			users.users.root.initialPassword = \"root\";\n \
 		' /mnt/etc/nixos/configuration.nix; \
-		nixos-install --no-root-passwd; \
+		nixos-install --no-root-password; \
 		reboot; \
 	"
 

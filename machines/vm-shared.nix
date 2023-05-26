@@ -65,7 +65,7 @@
     dpi = 220;
 
     desktopManager = {
-      xterm.enable = false;
+      xterm.enable = true;
       wallpaper.mode = "fill";
     };
 
@@ -76,7 +76,7 @@
       # AARCH64: For now, on Apple Silicon, we must manually set the
       # display resolution. This is a known issue with VMware Fusion.
       sessionCommands = ''
-        ${pkgs.xorg.xset}/bin/xset r rate 200 40
+	${pkgs.xorg.xset}/bin/xset r rate 200 40
       '';
     };
 
@@ -88,16 +88,16 @@
   # Enable tailscale. We manually authenticate when we want with
   # "sudo tailscale up". If you don't use tailscale, you should comment
   # out or delete all of this.
-  services.tailscale.enable = true;
+  #services.tailscale.enable = true;
 
   # Enable flatpak. We try not to use this (we prefer to use Nix!) but
   # some software its useful to use this and we also use it for dev tools.
-  services.flatpak.enable = true;
+  #services.flatpak.enable = true;
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.mutableUsers = false;
+  users.mutableUsers = true;
 
   # Manage fonts. We pull these from a secret directory since most of these
   # fonts require a purchase.
@@ -142,7 +142,7 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.openssh.passwordAuthentication = true;
-  services.openssh.permitRootLogin = "no";
+  services.openssh.permitRootLogin = "yes";
 
   # Disable the firewall since we're in a VM and we want to make it
   # easy to visit stuff in here. We only use NAT networking anyways.
