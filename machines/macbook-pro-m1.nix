@@ -8,15 +8,15 @@
   nix.useDaemon = true;
 
   # Keep in async with vm-shared.nix. (todo: pull this out into a file)
-  nix = {
-    # public binary cache that I use for all my derivations. You can keep
-    # this, use your own, or toss it. Its typically safe to use a binary cache
-    # since the data inside is checksummed.
-    settings = {
-      substituters = ["https://mitchellh-nixos-config.cachix.org"];
-      trusted-public-keys = ["mitchellh-nixos-config.cachix.org-1:bjEbXJyLrL1HZZHBbO4QALnI5faYZppzkU4D2s0G8RQ="];
-    };
-  };
+  #nix = {
+    ## public binary cache that I use for all my derivations. You can keep
+    ## this, use your own, or toss it. Its typically safe to use a binary cache
+    ## since the data inside is checksummed.
+    #settings = {
+      #substituters = ["https://mitchellh-nixos-config.cachix.org"];
+      #trusted-public-keys = ["mitchellh-nixos-config.cachix.org-1:bjEbXJyLrL1HZZHBbO4QALnI5faYZppzkU4D2s0G8RQ="];
+    #};
+  #};
 
   # zsh is the default shell on Mac and we want to make sure that we're
   # configuring the rc correctly with nix-darwin paths.

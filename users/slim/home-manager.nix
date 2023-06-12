@@ -35,6 +35,11 @@ in {
     pkgs.ripgrep
     pkgs.tree
     pkgs.watch
+    pkgs.exa
+    pkgs.clojure-lsp pkgs.rnix-lsp pkgs.temurin-bin pkgs.leiningen pkgs.babashka
+    pkgs.figlet pkgs.toilet
+    pkgs.grype pkgs.hadolint
+    pkgs.graphviz
 
     pkgs.gopls
     pkgs.zigpkgs.master
@@ -101,19 +106,31 @@ in {
     shellOptions = [];
     historyControl = [ "ignoredups" "ignorespace" ];
     initExtra = builtins.readFile ./bashrc;
+    profileExtra = builtins.readFile ./bash_profile;
+  };
 
-    shellAliases = {
-      ga = "git add";
-      gc = "git commit";
-      gco = "git checkout";
-      gcp = "git cherry-pick";
-      gdiff = "git diff";
-      gl = "git prettylog";
-      gp = "git push";
-      gs = "git status";
-      gt = "git tag";
+  programs.starship.enable = true;
+  programs.starship.settings = {
+    add_newline = false;
+    format = "$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
+    shlvl = {
+      disabled = false;
+      symbol = "ﰬ";
+      style = "bright-red bold";
+    };
+    shell = {
+      disabled = false;
+      format = "$indicator";
+      fish_indicator = "";
+      bash_indicator = "[BASH](bright-white) ";
+      zsh_indicator = "[ZSH](bright-white) ";
+    };
+    username = {
+      style_user = "bright-white bold";
+      style_root = "bright-red bold";
     };
   };
+
 
   programs.direnv= {
     enable = true;
