@@ -47,6 +47,9 @@ in {
     # Node is required for Copilot.vim
     pkgs.nodejs
 
+    # Move this to the neovim module
+    pkgs.neovim
+
     (pkgs.python3.withPackages (p: with p; [
       ipython
       jupyter
@@ -218,56 +221,56 @@ in {
     };
   };
 
-  programs.neovim = {
-    enable = true;
-    package = pkgs.neovim-nightly;
-
-    withPython3 = true;
-    extraPython3Packages = (p: with p; [
-      # For nvim-magma
-      jupyter-client
-      cairosvg
-      plotly
-      #pnglatex
+#  programs.neovim = {
+#    enable = true;
+#    package = pkgs.neovim-nightly;
+#
+#    withPython3 = true;
+#    extraPython3Packages = (p: with p; [
+#      # For nvim-magma
+#      jupyter-client
+#      cairosvg
+#      plotly
+#      #pnglatex
       #kaleido
-    ]);
-
-    plugins = with pkgs; [
-      customVim.vim-copilot
-      customVim.vim-cue
-      customVim.vim-fish
-      customVim.vim-fugitive
-      customVim.vim-glsl
-      customVim.vim-misc
-      customVim.vim-pgsql
-      customVim.vim-tla
-      customVim.vim-zig
-      customVim.pigeon
-      customVim.AfterColors
-
-      customVim.vim-devicons
-      customVim.vim-nord
-      customVim.nvim-comment
-      customVim.nvim-lspconfig
-      customVim.nvim-plenary # required for telescope
-      customVim.nvim-telescope
-      customVim.nvim-treesitter
-      customVim.nvim-treesitter-playground
-      customVim.nvim-treesitter-textobjects
-      customVim.nvim-magma
-
-      vimPlugins.vim-airline
-      vimPlugins.vim-airline-themes
-      vimPlugins.vim-eunuch
-      vimPlugins.vim-gitgutter
-
-      vimPlugins.vim-markdown
-      vimPlugins.vim-nix
-      vimPlugins.typescript-vim
-    ];
-
-    extraConfig = (import ./vim-config.nix) { inherit sources; };
-  };
+#    ]);
+#
+#    plugins = with pkgs; [
+#      customVim.vim-copilot
+#      customVim.vim-cue
+#      customVim.vim-fish
+#      customVim.vim-fugitive
+#      customVim.vim-glsl
+#      customVim.vim-misc
+#      customVim.vim-pgsql
+#      customVim.vim-tla
+#      customVim.vim-zig
+#      customVim.pigeon
+#      customVim.AfterColors
+#
+#      customVim.vim-devicons
+#      customVim.vim-nord
+#      customVim.nvim-comment
+#      customVim.nvim-lspconfig
+#      customVim.nvim-plenary # required for telescope
+#      customVim.nvim-telescope
+#      customVim.nvim-treesitter
+#      customVim.nvim-treesitter-playground
+#      customVim.nvim-treesitter-textobjects
+#      customVim.nvim-magma
+#
+#      vimPlugins.vim-airline
+#      vimPlugins.vim-airline-themes
+#      vimPlugins.vim-eunuch
+#      vimPlugins.vim-gitgutter
+#
+#      vimPlugins.vim-markdown
+#      vimPlugins.vim-nix
+#      vimPlugins.typescript-vim
+#    ];
+#
+#    extraConfig = (import ./vim-config.nix) { inherit sources; };
+#  };
 
   services.gpg-agent = {
     enable = isLinux;
