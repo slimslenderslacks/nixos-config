@@ -80,5 +80,11 @@
       system = "aarch64-darwin";
       user   = "slim";
     };
+
+    darwinConfigurations.macbook-pro-x86 = mkDarwin "macbook-pro-x86" {
+      inherit darwin nixpkgs home-manager overlays;
+      system = "x86_64-darwin";
+      user   = "slim";
+    };
   };
 }
