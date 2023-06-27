@@ -40,6 +40,7 @@ in {
     pkgs.figlet pkgs.toilet
     pkgs.grype pkgs.hadolint
     pkgs.graphviz
+    pkgs.screen
 
     pkgs.gopls
     pkgs.zigpkgs.master
@@ -263,6 +264,7 @@ in {
       vimPlugins.vim-airline-themes
       vimPlugins.vim-eunuch
       vimPlugins.vim-gitgutter
+      vimPlugins.vim-slime
 
       # vimPlugins.vim-markdown
       vimPlugins.vim-nix
