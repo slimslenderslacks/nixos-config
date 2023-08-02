@@ -19,6 +19,8 @@
     settings = {
       substituters = ["https://mitchellh-nixos-config.cachix.org"];
       trusted-public-keys = ["mitchellh-nixos-config.cachix.org-1:bjEbXJyLrL1HZZHBbO4QALnI5faYZppzkU4D2s0G8RQ="];
+      extra-trusted-substituters = ["https://cache.floxdev.com"];
+      extra-trusted-public-keys = ["flox-store-public-0:8c/B+kjIaQ+BloCmNkRUKwaVPFWkriSAd0JJvuDu4F0="];
     };
   };
 

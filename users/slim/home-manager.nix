@@ -48,6 +48,9 @@ in {
     # Node is required for Copilot.vim
     pkgs.nodejs
 
+    # Babashka Jet
+    pkgs.jet
+
     # Move this to the neovim module
     #pkgs.neovim
 
