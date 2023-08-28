@@ -51,6 +51,9 @@ in {
     # Babashka Jet
     pkgs.jet
 
+    # GitHub
+    pkgs.gh
+
     # Move this to the neovim module
     #pkgs.neovim
 
