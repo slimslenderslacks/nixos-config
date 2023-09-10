@@ -54,7 +54,7 @@ function daws-creds {
 
 export IN_REPL=true
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export PATH=~/gcp/google-cloud-sdk/bin:$PATH
+export PATH=~/gcp/google-cloud-sdk/bin:~/.local/bin/:$PATH
 export AWS_IAM_USER=jim
 export ATOMIST_ROOT=~/atomist
 export BB_SCRIPTS=/Users/slim/atmhq/bb_scripts
@@ -143,5 +143,5 @@ source ~/atmhq/bb_scripts/completions.sh
     #k get secret $1 -o json | jq '.data.config' | xargs echo | base64 --decode | jq '.'
 #}
 
-#export PATH=~/datomic-cli:$PATH	
+#export PATH=~/datomic-cli:$PATH
 
