@@ -73,6 +73,9 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+local ollama = require('ollama')
+ollama.setup()
+
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
