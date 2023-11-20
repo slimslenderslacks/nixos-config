@@ -61,6 +61,7 @@ export BB_SCRIPTS=/Users/slim/atmhq/bb_scripts
 export BB_LOCAL=TRUE
 export JWT_CREATOR="/Users/slim/atmhq/jwt-creator"
 export GPG_TTY=$(tty)
+export NIXNAME=macbook-pro-m1
 
 function atm-bb {
     export BB_WD=${PWD}

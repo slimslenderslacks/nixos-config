@@ -131,6 +131,16 @@ let sources = import ../../nix/sources.nix; in rec {
       name = "nvim-treesitter-textobjects";
       src = sources.nvim-treesitter-textobjects;
     };
+
+    nvim-gen = vimUtils.buildVimPlugin {
+        name = "nvim-gen";
+        src = sources.nvim-gen;
+    };
+    nvim-ollama = vimUtils.buildVimPlugin {
+        name = "nvim-ollama";
+        src = sources.ollama;
+    };
+
   };
 
   tree-sitter-proto = self.callPackage

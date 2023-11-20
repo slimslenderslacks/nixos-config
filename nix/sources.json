@@ -155,6 +155,18 @@
         "url": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects/archive/35a60f093fa15a303874975f963428a5cd24e4a0.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "ollama": {
+        "branch": "main",
+        "description": "A plugin for managing and integrating your ollama workflows in neovim.",
+        "homepage": "https://ollama.ai",
+        "owner": "nomnivore",
+        "repo": "ollama.nvim",
+        "rev": "c2b87d224ce8b0c9004eff4a03446d8517b23fb8",
+        "sha256": "sha256:1r17p5rf98rl108q4x4q0gzq3flfn6lb27l6h8cnz1p92vjam9l6",
+        "type": "tarball",
+        "url": "https://github.com/nomnivore/ollama.nvim/archive/c2b87d224ce8b0c9004eff4a03446d8517b23fb8.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "pack": {
         "branch": "v0.11.0",
         "description": "CLI for building apps using Cloud Native Buildpacks",
@@ -297,6 +309,18 @@
         "sha256": "0qgxchrsydxznxwz3gwksqg3nal1ypmwi0ibpkf4whc62a8xxgl6",
         "type": "tarball",
         "url": "https://github.com/tpope/vim-fugitive/archive/5f0d280b517cacb16f59316659966c7ca5e2bea2.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nvim-gen": {
+        "branch": "master",
+        "description": "Neovim plugin to generate text using LLMs with customizable prompts",
+        "homepage": null,
+        "owner": "David-Kunz",
+        "repo": "gen.nvim",
+        "rev": "f5866b91a48dd4ab86edfe931bf563e15381f91f",
+        "sha256": "sha256:13gxnbnd2id5g6adylv4b6g3950hv4kfhk64wasbnhb8kfkqn0rn",
+        "type": "tarball",
+        "url": "https://github.com/David-Kunz/gen.nvim/archive/f5866b91a48dd4ab86edfe931bf563e15381f91f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "vim-glsl": {

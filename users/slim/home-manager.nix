@@ -57,6 +57,11 @@ in {
     # GitHub
     pkgs.gh
 
+    # Charmbracelet
+    pkgs.glow
+    pkgs.gum
+    pkgs.vhs
+
   ] ++ (lib.optionals isDarwin [
     # This is automatically setup on Linux
     pkgs.cachix
@@ -252,13 +257,15 @@ in {
       customVim.nvim-treesitter
       customVim.nvim-treesitter-playground
       customVim.nvim-treesitter-textobjects
-      customVim.nvim-magma
+      customVim.nvim-gen
+      customVim.nvim-ollama
 
       vimPlugins.vim-airline
       vimPlugins.vim-airline-themes
       vimPlugins.vim-eunuch
       vimPlugins.vim-gitgutter
       vimPlugins.vim-slime
+      vimPlugins.nerdtree
 
       # vimPlugins.vim-markdown
       vimPlugins.vim-nix
