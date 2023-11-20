@@ -241,7 +241,7 @@ in {
       customVim.vim-fish
       customVim.vim-fugitive
       customVim.vim-glsl
-      customVim.vim-misc
+      #customVim.vim-misc
       customVim.vim-pgsql
       customVim.vim-tla
       customVim.vim-zig
@@ -259,6 +259,8 @@ in {
       customVim.nvim-treesitter-textobjects
       customVim.nvim-gen
       customVim.nvim-ollama
+      customVim.vim-goyo
+      customVim.vim-paredit
 
       vimPlugins.vim-airline
       vimPlugins.vim-airline-themes
@@ -266,6 +268,7 @@ in {
       vimPlugins.vim-gitgutter
       vimPlugins.vim-slime
       vimPlugins.nerdtree
+      vimPlugins.nerdcommenter
 
       # vimPlugins.vim-markdown
       vimPlugins.vim-nix

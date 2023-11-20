@@ -35,6 +35,18 @@
         "url": "https://github.com/golang/go/archive/9b955d2d3fcff6a5bc8bce7bafdc4c634a28e95b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "goyo": {
+        "branch": "master",
+        "description": "Distraction-free writing in Vim",
+        "homepage": "",
+        "owner": "junegunn",
+        "repo": "goyo.vim",
+        "rev": "fa0263d456dd43f5926484d1c4c7022dfcb21ba9",
+        "sha256": "sha256:1xiqviqbwhiaclax0zlazsahda5f54waqmd9zgjwxwklivj7cqxv",
+        "type": "tarball",
+        "url": "https://github.com/junegunn/goyo.vim/archive/fa0263d456dd43f5926484d1c4c7022dfcb21ba9.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "niv": {
         "branch": "master",
         "description": "Easy dependency management for Nix projects",
@@ -177,6 +189,18 @@
         "sha256": "1pa7ml9x4cpp7v08720xjqllxkxqsqap987gdzzsa26k218q1fhz",
         "type": "tarball",
         "url": "https://github.com/buildpacks/pack/archive/2cf2c3442f574a2239ea3ee17aad7058fefe5410.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "paredit": {
+        "branch": "master",
+        "description": "Paredit Mode: Structured Editing of Lisp S-expressions",
+        "homepage": "https://buildpacks.io",
+        "owner": "vim-scripts",
+        "repo": "paredit.vim",
+        "rev": "791c3a0cc3155f424fba9409a9520eec241c189c",
+        "sha256": "sha256:15lg33bgv7afjikn1qanriaxmqg4bp3pm7qqhch6105r1sji9gz9",
+        "type": "tarball",
+        "url": "https://github.com/vim-scripts/paredit.vim/archive/791c3a0cc3155f424fba9409a9520eec241c189c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "theme-bobthefish": {

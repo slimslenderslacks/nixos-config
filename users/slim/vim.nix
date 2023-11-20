@@ -30,9 +30,19 @@ let sources = import ../../nix/sources.nix; in rec {
       src = sources.vim-glsl;
     };
 
+    vim-goyo = vimUtils.buildVimPlugin {
+      name = "vim-goyo";
+      src = sources.goyo;
+    };
+
     vim-misc = vimUtils.buildVimPlugin {
       name = "vim-misc";
       src = sources.vim-misc;
+    };
+
+    vim-paredit = vimUtils.buildVimPlugin {
+      name = "vim-paredit";
+      src = sources.paredit;
     };
 
     vim-pgsql = vimUtils.buildVimPlugin {
