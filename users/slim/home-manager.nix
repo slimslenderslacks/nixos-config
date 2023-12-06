@@ -259,6 +259,7 @@ in {
       customVim.nvim-treesitter-textobjects
       customVim.nvim-gen
       customVim.nvim-ollama
+      customVim.nvim-lazy
       customVim.vim-goyo
       customVim.vim-paredit
 
