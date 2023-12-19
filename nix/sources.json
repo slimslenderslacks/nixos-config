@@ -137,22 +137,10 @@
         "homepage": "",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "957aefe8148902897aad877e508ae7e747f155fc",
+        "rev": "0dfbf5e48e8551212c2a9f1c74cb080c8e76b5d1",
         "sha256": "19fd08k3ns65sqclr2b3pfrqirm92fwmzvxa726dawxfpq3m26mc",
         "type": "tarball",
-        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/957aefe8148902897aad877e508ae7e747f155fc.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "nvim-treesitter-playground": {
-        "branch": "master",
-        "description": "Treesitter playground integrated into Neovim",
-        "homepage": "",
-        "owner": "nvim-treesitter",
-        "repo": "playground",
-        "rev": "2b81a018a49f8e476341dfcb228b7b808baba68b",
-        "sha256": "1b7h4sih8dc55w12f0v5knk9cxfpy0iffhbvmg0g84if55ar616v",
-        "type": "tarball",
-        "url": "https://github.com/nvim-treesitter/playground/archive/2b81a018a49f8e476341dfcb228b7b808baba68b.tar.gz",
+        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/0dfbf5e48e8551212c2a9f1c74cb080c8e76b5d1.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nvim-treesitter-textobjects": {
@@ -161,10 +149,10 @@
         "homepage": "",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter-textobjects",
-        "rev": "35a60f093fa15a303874975f963428a5cd24e4a0",
+        "rev": "ec1c5bdb3d87ac971749fa6c7dbc2b14884f1f6a",
         "sha256": "16yxsqa5ppb9p8l3r6j11ak6a5448l6wy9dj4ag58i0r18l0cfj9",
         "type": "tarball",
-        "url": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects/archive/35a60f093fa15a303874975f963428a5cd24e4a0.tar.gz",
+        "url": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects/archive/ec1c5bdb3d87ac971749fa6c7dbc2b14884f1f6a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "ollama": {
@@ -173,10 +161,10 @@
         "homepage": "https://ollama.ai",
         "owner": "nomnivore",
         "repo": "ollama.nvim",
-        "rev": "c2b87d224ce8b0c9004eff4a03446d8517b23fb8",
-        "sha256": "sha256:1r17p5rf98rl108q4x4q0gzq3flfn6lb27l6h8cnz1p92vjam9l6",
+        "rev": "4e3d7dfa9454fc4fd4751e167f7f6a44b93bf594",
+        "sha256": "sha256:1n5a9xgjmm4d8d6gpyb5392a5xhppqlyc90ljj9pqss3irbh7ivx",
         "type": "tarball",
-        "url": "https://github.com/nomnivore/ollama.nvim/archive/c2b87d224ce8b0c9004eff4a03446d8517b23fb8.tar.gz",
+        "url": "https://github.com/nomnivore/ollama.nvim/archive/4e3d7dfa9454fc4fd4751e167f7f6a44b93bf594.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "pack": {
