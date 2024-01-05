@@ -62,6 +62,9 @@ in {
     pkgs.gum
     pkgs.vhs
 
+    # Python dev
+    pkgs.nodePackages.pyright
+
   ] ++ (lib.optionals isDarwin [
     # This is automatically setup on Linux
     pkgs.cachix
