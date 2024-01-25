@@ -261,12 +261,9 @@ in {
       customVim.nvim-treesitter-textobjects
       customVim.nvim-gen
       customVim.nvim-ollama
-      customVim.nvim-lazy
       customVim.vim-goyo
       customVim.vim-paredit
 
-      vimPlugins.vim-airline
-      vimPlugins.vim-airline-themes
       vimPlugins.vim-eunuch
       vimPlugins.vim-gitgutter
       vimPlugins.vim-slime

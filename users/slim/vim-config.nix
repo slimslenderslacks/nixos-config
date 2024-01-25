@@ -23,8 +23,11 @@ if filereadable(vim_misc_path)
 endif
 
 lua <<EOF
+
+require('nvim-treesitter').setup()
 ---------------------------------------------------------------------
 -- Add our custom treesitter parsers
+
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 
 parser_config.proto = {
@@ -76,30 +79,96 @@ require'nvim-treesitter.configs'.setup {
 local ollama = require('ollama')
 ollama.setup()
 
-local execute = vim.api.nvim_command
-local fn = vim.fn
+local nixPackPath = vim.opt.runtimepath:get()[1]
 
-local pack_path = fn.stdpath("data") .. "/site/pack"
-local fmt = string.format
-
-function ensure (user, repo)
-  -- Ensures a given github.com/USER/REPO is cloned in the pack/packer/start directory.
-  local install_path = fmt("%s/packer/start/%s", pack_path, repo, repo)
-  if fn.empty(fn.glob(install_path)) > 0 then
-    execute(fmt("!git clone https://github.com/%s/%s %s", user, repo, install_path))
-    execute(fmt("packadd %s", repo))
-  end
+-- lazy bootstrap
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Bootstrap essential plugins required for installing and loading the rest.
-ensure("wbthomason", "packer.nvim")
-ensure("Olical", "aniseed")
+-- lazy setup
+require("lazy").setup({
+  -- these are in the wrong place (lazy bug)
+  'tpope/vim-fugitive',
+  'preservim/nerdtree',
+  'preservim/nerdcommenter',
+  --
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = true,
+  },
+  { 'projekt0n/github-nvim-theme',
+     lazy = false,
+     priority = 1000,
+     tag = 'v0.0.7',
+     config = function()
+       require('github-theme').setup( { theme_style = 'dark', comment_style = 'italic', } )
+     end,
+  },
+  { 'Olical/aniseed',
+    lazy = false,
+    branch = 'develop' 
+  },
+  {
+    'Olical/conjure',
+    branch = 'master',
+    lazy = false,
+    config = function()
+      vim.g["conjure#mapping#doc_word"] = "K"
+      vim.g["conjure#client#clojure#nrepl#eval#auto_require"] = false
+      vim.g["conjure#client#clojure#nrepl#connection#auto_repl#enabled"] = false
+      vim.g["conjure#client#clojure#nrepl#eval#raw_out"] = true
+      vim.g["conjure#log#wrap"] = true
+    end,
+  },
+  {
+    'L3MON4D3/LuaSnip',
+    dependencies = { 'saadparwaiz1/cmp_luasnip' }
+  },
+  {
+    'nvim-telescope/telescope.nvim',
+    dependencies = {'nvim-telescope/telescope-ui-select.nvim',
+                    'nvim-lua/popup.nvim',
+                    'nvim-lua/plenary.nvim'},
+  },
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {'hrsh7th/cmp-buffer',
+                    'hrsh7th/cmp-nvim-lsp',
+                    'hrsh7th/cmp-vsnip',
+                    'PaterJason/cmp-conjure'}
+  },
+  {
+    'slimslenderslacks/nvim-cmp-lsp-inline-completion',
+    dir = '/Users/slim/slimslenderslacks/nvim-cmp-lsp-inline-completion/'
+  },
+  {
+    'slimslenderslacks/nvim-lspconfig',
+  },
+  {
+    'slimslenderslacks/nvim-docker-ai',
+    dir = '/Users/slim/slimslenderslacks/nvim-docker-ai',
+    dependencies = {
+      'slimslenderslacks/nvim-lspconfig',
+      'Olical/aniseed',
+      'nvim-lua/plenary.nvim'
+    },
+  },
+})
+
 
 -- Enable Aniseed's automatic compilation and loading of Fennel source code.
-vim.g["aniseed#env"] = {
-  module = "config.init",
-  compile = true
-}
+require('aniseed.env').init( { module = 'config.init', compile = true, })
 
 EOF
 ''

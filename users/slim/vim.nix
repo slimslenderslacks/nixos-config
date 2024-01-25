@@ -145,10 +145,6 @@ let sources = import ../../nix/sources.nix; in rec {
         name = "nvim-ollama";
         src = sources.ollama;
     };
-    nvim-lazy = vimUtils.buildVimPlugin {
-        name = "nvim-lazy";
-        src = sources.lazy;
-    };
 
   };
 
