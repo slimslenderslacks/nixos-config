@@ -11,6 +11,7 @@ loaded using lazy.
 
 - [ ] the fennel files are not in a nix package.  Besides this, the lazy lock file is also not in nix.
 - [ ] there's a lazy bug below which makes it impossible to mix nix vim packges with lazy packages
+- [ ] does vim-nix have anything useful
 
 ## Lazy Bug
 
@@ -18,4 +19,5 @@ There's a bug in Lazy that will alter the `runtimepath` significantly.  The plug
 
 [awesome-vim]: https://github.com/rockerBOO/awesome-neovim?tab=readme-ov-file#search
 [vim-section]: https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/vim.section.md
+[nix-vim-utils]: https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/vim/plugins/vim-utils.nix#L408
 

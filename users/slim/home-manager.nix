@@ -264,7 +264,6 @@ in {
       customVim.vim-goyo
       customVim.vim-paredit
 
-      vimPlugins.vim-eunuch
       vimPlugins.vim-gitgutter
       vimPlugins.vim-slime
       vimPlugins.nerdtree

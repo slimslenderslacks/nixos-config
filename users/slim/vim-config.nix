@@ -97,11 +97,15 @@ vim.opt.rtp:prepend(lazypath)
 
 -- lazy setup
 require("lazy").setup({
+
   -- these are in the wrong place (lazy bug)
-  'tpope/vim-fugitive',
-  'preservim/nerdtree',
-  'preservim/nerdcommenter',
+  -- 'tpope/vim-fugitive',
+  -- 'preservim/nerdtree',
+     'preservim/nerdcommenter',
+  -- {'kovisoft/paredit', commit = '3609c637d1be6bfea21dc4930f0901f2430d665b'},
+  -- 'junegunn/goyo.vim',
   --
+
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -158,14 +162,22 @@ require("lazy").setup({
   {
     'slimslenderslacks/nvim-docker-ai',
     dir = '/Users/slim/slimslenderslacks/nvim-docker-ai',
+    lazy = false,
     dependencies = {
-      'slimslenderslacks/nvim-lspconfig',
       'Olical/aniseed',
-      'nvim-lua/plenary.nvim'
+      'nvim-lua/plenary.nvim',
+      'hrsh7th/nvim-cmp',
     },
+    config = function(plugin, opts)
+      require("dockerai")
+    end,
   },
-})
+}, 
+	{ performance = { reset_packpath = false, 
+	                  rtp = { reset = false, },}})
 
+-- Lazy now takes over step 10 of neovim plugin loading - re-enable it because it will be false
+vim.go.loadplugins = true
 
 -- Enable Aniseed's automatic compilation and loading of Fennel source code.
 require('aniseed.env').init( { module = 'config.init', compile = true, })
