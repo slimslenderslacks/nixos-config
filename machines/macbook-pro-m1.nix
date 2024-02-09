@@ -15,10 +15,10 @@
     # public binary cache that I use for all my derivations. You can keep
     # this, use your own, or toss it. Its typically safe to use a binary cache
     # since the data inside is checksummed.
-    #settings = {
-    #  substituters = ["https://mitchellh-nixos-config.cachix.org"];
-    #  trusted-public-keys = ["mitchellh-nixos-config.cachix.org-1:bjEbXJyLrL1HZZHBbO4QALnI5faYZppzkU4D2s0G8RQ="];
-    #};
+    settings = {
+      substituters = ["https://cache.iog.io"];
+      trusted-public-keys = ["hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="];
+    };
   };
 
   # zsh is the default shell on Mac and we want to make sure that we're
