@@ -175,6 +175,11 @@ require("lazy").setup({
       require("dockerai")
     end,
   },
+  {
+    'mrcjkb/haskell-tools.nvim',
+    version = '^3', -- Recommended
+    ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
+  }
 }, 
 	{ performance = { reset_packpath = false, 
 	                  rtp = { reset = false, },}})

@@ -150,7 +150,7 @@
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter-textobjects",
         "rev": "ec1c5bdb3d87ac971749fa6c7dbc2b14884f1f6a",
-        "sha256": "16yxsqa5ppb9p8l3r6j11ak6a5448l6wy9dj4ag58i0r18l0cfj9",
+        "sha256": "1kdfwihk8ci827aq4w6xv7vn2740qpmh6dk892cd6yi0ab4zxvxn",
         "type": "tarball",
         "url": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects/archive/ec1c5bdb3d87ac971749fa6c7dbc2b14884f1f6a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"

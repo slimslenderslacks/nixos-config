@@ -37,7 +37,7 @@ in {
     pkgs.ripgrep
     pkgs.tree
     pkgs.watch
-    pkgs.exa
+    pkgs.eza
     pkgs.clojure-lsp pkgs.rnix-lsp pkgs.temurin-bin pkgs.leiningen pkgs.babashka
     pkgs.figlet pkgs.toilet
     pkgs.grype pkgs.hadolint
@@ -74,7 +74,7 @@ in {
     pkgs.firefox
     pkgs.rofi
     pkgs.zathura
-    pkgs.xfcd.xfcd4-teriminal
+    pkgs.xfce.xfce4-terminal
   ]);
 
   #---------------------------------------------------------------------
