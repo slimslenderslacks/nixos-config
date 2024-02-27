@@ -176,19 +176,40 @@ require("lazy").setup({
     end,
   },
   {
+    'slimslenderslacks/nvim-docker-ai',
+    dir = '/Users/slim/slimslenderslacks/nvim-docker-ai',
+    lazy = false,
+    dependencies = {
+      'Olical/aniseed',
+      'nvim-lua/plenary.nvim',
+      'hrsh7th/nvim-cmp',
+    },
+    config = function(plugin, opts)
+      require("dockerai")
+    end,
+  },
+  {
+    'slimslenderslacks/nvim-config',
+    dir = '/Users/slim/slimslenderslacks/nvim-config',
+    lazy = false,
+    config = function(plugin, opts)
+      require("config.init")
+    end,
+  },
+  {
     'mrcjkb/haskell-tools.nvim',
     version = '^3', -- Recommended
     ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
   }
 }, 
-	{ performance = { reset_packpath = false, 
-	                  rtp = { reset = false, },}})
+{ performance = { reset_packpath = false, 
+                  rtp = { reset = false, },}})
 
 -- Lazy now takes over step 10 of neovim plugin loading - re-enable it because it will be false
 vim.go.loadplugins = true
 
 -- Enable Aniseed's automatic compilation and loading of Fennel source code.
-require('aniseed.env').init( { module = 'config.init', compile = true, })
+require('aniseed.env').init( { compile = true, })
 
 EOF
 ''
