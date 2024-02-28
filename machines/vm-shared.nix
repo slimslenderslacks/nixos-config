@@ -59,6 +59,14 @@ in {
   # Virtualization settings
   virtualisation.docker.enable = true;
 
+  # https://docs.docker.com/reference/cli/dockerd/#daemon-configuration-file
+  virtualisation.docker.daemon.settings = {
+    group = "docker";
+    live-restore = true;
+    log-driver = "journald";
+    hosts = ["fd://" "tcp://0.0.0.0:2375"];
+  };
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 

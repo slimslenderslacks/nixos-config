@@ -176,19 +176,6 @@ require("lazy").setup({
     end,
   },
   {
-    'slimslenderslacks/nvim-docker-ai',
-    dir = '/Users/slim/slimslenderslacks/nvim-docker-ai',
-    lazy = false,
-    dependencies = {
-      'Olical/aniseed',
-      'nvim-lua/plenary.nvim',
-      'hrsh7th/nvim-cmp',
-    },
-    config = function(plugin, opts)
-      require("dockerai")
-    end,
-  },
-  {
     'slimslenderslacks/nvim-config',
     dir = '/Users/slim/slimslenderslacks/nvim-config',
     lazy = false,
