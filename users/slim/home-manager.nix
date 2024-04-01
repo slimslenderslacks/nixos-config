@@ -29,21 +29,28 @@ in {
   # per-project flakes sourced with direnv and nix-shell, so this is
   # not a huge list.
   home.packages = [
-    pkgs.bat
     pkgs.fd
-    pkgs.fzf
     pkgs.htop
-    pkgs.jq
-    pkgs.ripgrep
-    pkgs.tree
     pkgs.watch
-    pkgs.eza
     pkgs.clojure-lsp pkgs.rnix-lsp pkgs.temurin-bin pkgs.leiningen pkgs.babashka
     pkgs.figlet pkgs.toilet
     pkgs.grype pkgs.hadolint
     pkgs.graphviz
     pkgs.screen
     pkgs.socat
+
+    pkgs.thefuck
+    pkgs.zoxide
+    pkgs.tldr
+    pkgs.scc
+    pkgs.eza
+    pkgs.lazydocker
+    pkgs.procs
+    pkgs.fzf
+    pkgs.bat
+    pkgs.jq
+    pkgs.ripgrep
+    pkgs.tree
 
     pkgs.gopls
     pkgs.zigpkgs.master
@@ -64,6 +71,9 @@ in {
 
     # Python dev
     pkgs.nodePackages.pyright
+    
+    # TODO overlay this
+    inputs.dagger.packages.aarch64-darwin.dagger
 
   ] ++ (lib.optionals isDarwin [
     # This is automatically setup on Linux

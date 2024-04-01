@@ -43,6 +43,9 @@
     nvim-treesitter.flake = false;
     vim-copilot.url = "github:github/copilot.vim/v1.11.1";
     vim-copilot.flake = false;
+
+    # flakes
+    dagger.url = "github:dagger/nix";
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs: let
