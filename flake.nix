@@ -32,7 +32,7 @@
 
       # Only need unstable until the lpeg fix hits mainline, probably
       # not very long... can safely switch back for 23.11.
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Other packages

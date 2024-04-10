@@ -1,6 +1,6 @@
 { sources }:
 ''
-"--------------------------------------------------------------------
+
 " Fix vim paths so we load the vim-misc directory
 let g:vim_home_path = "~/.vim"
 
@@ -189,6 +189,18 @@ require("lazy").setup({
     'mrcjkb/haskell-tools.nvim',
     version = '^3', -- Recommended
     ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
+  },
+  {
+    'CopilotC-Nvim/CopilotChat.nvim',
+    branch = "canary",
+    dependencies = {
+      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+    },
+    opts = {
+      debug = true, -- Enable debugging
+      -- See Configuration section for rest
+    },
   }
 }, 
 { performance = { reset_packpath = false, 
