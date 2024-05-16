@@ -51,12 +51,15 @@ in {
     pkgs.jq
     pkgs.ripgrep
     pkgs.tree
+    pkgs.pstree
 
     pkgs.gopls
+    pkgs.yaml-language-server
     pkgs.zigpkgs.master
 
     # Node is required for Copilot.vim
     pkgs.nodejs
+    pkgs.yarn
 
     # Babashka Jet
     pkgs.jet
@@ -74,6 +77,9 @@ in {
     
     # TODO overlay this
     inputs.dagger.packages.aarch64-darwin.dagger
+
+    # atuin
+    pkgs.atuin
 
   ] ++ (lib.optionals isDarwin [
     # This is automatically setup on Linux

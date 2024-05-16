@@ -212,5 +212,8 @@ vim.go.loadplugins = true
 -- Enable Aniseed's automatic compilation and loading of Fennel source code.
 require('aniseed.env').init( { compile = true, })
 
+-- InlayHints need to be set explicitly for this theme
+vim.cmd("hi LspInlayHint guifg=Grey")
+
 EOF
 ''
