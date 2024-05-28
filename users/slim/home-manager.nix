@@ -75,8 +75,7 @@ in {
     # Python dev
     pkgs.nodePackages.pyright
     
-    # TODO overlay this
-    inputs.dagger.packages.aarch64-darwin.dagger
+    inputs.dagger.packages.${pkgs.system}.dagger
 
     # atuin
     pkgs.atuin

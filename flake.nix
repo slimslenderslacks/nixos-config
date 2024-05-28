@@ -33,13 +33,11 @@
     nvim-treesitter = {
       url = "github:nvim-treesitter/nvim-treesitter/v0.9.1";
       flake = false;
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     vim-copilot = {
       url = "github:github/copilot.vim/v1.32.0";
       flake = false;
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # flakes
