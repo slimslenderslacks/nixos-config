@@ -41,7 +41,7 @@
     # Non-flakes
     nvim-treesitter.url = "github:nvim-treesitter/nvim-treesitter/v0.9.1";
     nvim-treesitter.flake = false;
-    vim-copilot.url = "github:github/copilot.vim/v1.11.1";
+    vim-copilot.url = "github:github/copilot.vim/v1.32.0";
     vim-copilot.flake = false;
 
     # flakes
