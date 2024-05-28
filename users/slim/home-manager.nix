@@ -32,7 +32,7 @@ in {
     pkgs.fd
     pkgs.htop
     pkgs.watch
-    pkgs.clojure-lsp pkgs.rnix-lsp pkgs.temurin-bin pkgs.leiningen pkgs.babashka
+    pkgs.clojure-lsp pkgs.temurin-bin pkgs.leiningen pkgs.babashka
     pkgs.figlet pkgs.toilet
     pkgs.grype pkgs.hadolint
     pkgs.graphviz
@@ -250,7 +250,6 @@ in {
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-nightly;
 
     withPython3 = true;
 
@@ -295,7 +294,6 @@ in {
 
   services.gpg-agent = {
     enable = isLinux;
-    pinentryFlavor = "tty";
 
     # cache the keys forever so we don't get asked for a password
     defaultCacheTtl = 31536000;
