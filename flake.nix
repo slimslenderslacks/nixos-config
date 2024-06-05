@@ -29,6 +29,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # flakes
+    dagger = {
+      url = "github:dagger/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Non-flakes
     nvim-treesitter = {
       url = "github:nvim-treesitter/nvim-treesitter/v0.9.1";
@@ -40,10 +46,9 @@
       flake = false;
     };
 
-    # flakes
-    dagger = {
-      url = "github:dagger/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+    vim-marked = {
+      url = "github:itspriddle/vim-marked/v1.0.0";
+      flake = false;
     };
   };
 

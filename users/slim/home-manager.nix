@@ -254,6 +254,7 @@ in {
 
     plugins = with pkgs; [
       customVim.vim-copilot
+      customVim.vim-marked
       customVim.vim-cue
       customVim.vim-fish
       customVim.vim-fugitive

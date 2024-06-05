@@ -189,6 +189,7 @@
         "nixpkgs": "nixpkgs",
         "nvim-treesitter": "nvim-treesitter",
         "vim-copilot": "vim-copilot",
+        "vim-marked": "vim-marked",
         "zig": "zig"
       }
     },
@@ -221,6 +222,23 @@
         "owner": "github",
         "ref": "v1.32.0",
         "repo": "copilot.vim",
+        "type": "github"
+      }
+    },
+    "vim-marked": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1548578555,
+        "narHash": "sha256-WPs0o6ZHck4ZjYxdVg80ExGdZd+xSqFHI/Jvqa7gkyw=",
+        "owner": "itspriddle",
+        "repo": "vim-marked",
+        "rev": "ae74ac624522f266ebbf228c810619d3599e6cff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "itspriddle",
+        "ref": "v1.0.0",
+        "repo": "vim-marked",
         "type": "github"
       }
     },
