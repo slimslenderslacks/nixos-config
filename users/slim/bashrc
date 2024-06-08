@@ -5,8 +5,6 @@ alias gd='git diff'
 alias gc='git commit'
 alias ggraph='git log --all --decorate --oneline --graph'
 alias git-amend-no-edit='git commit -a --amend --no-edit'
-alias docker-clean-images='docker images -q | xargs docker rmi'
-alias docker-clean-containers='docker ps -aq | xargs docker rm'
 alias op-signin='eval $(op signin atomist)'
 alias op-export='eval $(export_secrets)'
 alias tag-list='git tag --list --sort=v:refname | tail -5'
@@ -16,18 +14,18 @@ alias title='echo -en "\e]0; $(basename $(pwd)) \a"'
 alias bb-repl='op-export && bb --nrepl-server -o'
 alias atm-token='eval $(atm-bb jwt-token)'
 alias atm-staging-token='eval $(atm-bb cli create-jwt --staging)'
-alias docs-build='docker run -it --rm -v "$PWD:/docs" squidfunk/mkdocs-material:5.3.3 build --strict'
-alias docs-test='docker run -it --rm -v "$PWD:/test" wjdp/htmltest:v0.12.0 htmltest'
-alias docs-serve='docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material:5.3.3'
 alias docker-pty='socat -d -d ~/Library/Containers/com.docker.docker/Data/debug-shell.sock pty,rawer'
 alias sign-file='ssh-keygen -Y sign -f ~/.ssh/id_rsa -n file'
+
 alias skill-simulate='docker run -v ${PWD}:/skill docker/atomist-simulate-tx'
 alias docker-vm='docker run -it --rm --privileged --pid=host justincormack/nsenter1'
 alias watchfs='docker run -it -v ${PWD}:/skill slimslenderslacks/fswatch /skill'
 alias local-skill='docker run --rm --init -it --add-host host.docker.internal:host-gateway -v ${PWD}:/skill -v /var/run/docker.sock:/var/run/docker.sock atomist/local-skill --pwd /skill --workspace ${TEAM} --apikey "$(< ~/.secrets/atomist-apikey)" --host-dir ${PWD} --watch'
+alias lsp-ps='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock vonwig/lsp-ls'
+alias dive='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -e DOCKER_API_VERSION=1.37 wagoodman/dive:latest'
+
 alias k="kubectl"
 alias d="docker"
-alias kn="kubens"
 alias a='export AWS_PROFILE=$(aws configure list-profiles | fzf)'
 alias ar='infra-cli aws init -y'
 alias al='infra-cli aws login -y'
@@ -36,7 +34,7 @@ alias aws-sso-init='infra-cli aws init'
 alias aws-sso-login='infra-cli aws login'
 alias aws-sso-temp-creds='eval $(aws configure export-credentials --format env)'
 alias eks='infra-cli aws configEks'
-alias dive='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -e DOCKER_API_VERSION=1.37 wagoodman/dive:latest'
+
 function verify-file {
     ssh-keygen -Y verify -f ~/.ssh/allowed_signers -I $1 -n file -s $2 < $3
 }
@@ -62,6 +60,7 @@ export BB_SCRIPTS=/Users/slim/atmhq/bb_scripts
 export BB_LOCAL=TRUE
 export JWT_CREATOR="/Users/slim/atmhq/jwt-creator"
 export GPG_TTY=$(tty)
+
 export NIXNAME=macbook-pro-m1
 
 function atm-bb {
@@ -70,10 +69,6 @@ function atm-bb {
     bb cli "$@"
     popd > /dev/null
 }
-
-#function docker-login-jimclark106 {
-  #cat ~/.secrets/dockerhub-jimclark106-pat | docker login -u jimclark106 --password-stdin
-#}
 
 # my bb-util tasks
 . ~/slimslenderslacks/bb-util/init.bash
