@@ -172,7 +172,7 @@ require("lazy").setup({
       'hrsh7th/nvim-cmp',
     },
     config = function(plugin, opts)
-      require("dockerai").setup(
+      require("docker.setup").setup(
         {}
       )
     end,
