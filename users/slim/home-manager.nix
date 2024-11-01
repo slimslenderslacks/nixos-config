@@ -29,6 +29,7 @@ in {
   # per-project flakes sourced with direnv and nix-shell, so this is
   # not a huge list.
   home.packages = [
+    pkgs._1password
     pkgs.curl
     pkgs.fd
     pkgs.htop
@@ -55,7 +56,7 @@ in {
     pkgs.pstree
 
     pkgs.gopls
-    pkgs.yaml-language-server
+    #pkgs.yaml-language-server
     pkgs.zigpkgs.master
 
     # Node is required for Copilot.vim
@@ -279,6 +280,12 @@ in {
       customVim.nvim-ollama
       customVim.vim-goyo
       customVim.vim-paredit
+
+      customVim.nvim-web-devicons
+      customVim.nvim-gitsigns
+      customVim.nvim-dressing
+      customVim.nvim-conform
+      customVim.nvim-nui
 
       vimPlugins.vim-gitgutter
       vimPlugins.vim-slime

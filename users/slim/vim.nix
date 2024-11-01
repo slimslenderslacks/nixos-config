@@ -151,6 +151,31 @@ let sources = import ../../nix/sources.nix; in rec {
         src = sources.ollama;
     };
 
+    nvim-web-devicons = vimUtils.buildVimPlugin {
+      name = "nvim-web-devicons";
+      src = inputs.nvim-web-devicons;
+    };
+
+    nvim-nui = vimUtils.buildVimPlugin {
+      name = "nvim-nui";
+      src = inputs.nvim-nui;
+    };
+
+    nvim-gitsigns = vimUtils.buildVimPlugin {
+      name = "nvim-gitsigns";
+      src = inputs.nvim-gitsigns;
+    };
+
+    nvim-dressing = vimUtils.buildVimPlugin {
+      name = "nvim-dressing";
+      src = inputs.nvim-dressing;
+    };
+
+    nvim-conform = vimUtils.buildVimPlugin {
+      name = "nvim-conform";
+      src = inputs.nvim-conform;
+    };
+
   };
 
   tree-sitter-proto = self.callPackage
