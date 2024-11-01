@@ -29,6 +29,7 @@ in {
   # per-project flakes sourced with direnv and nix-shell, so this is
   # not a huge list.
   home.packages = [
+    pkgs.curl
     pkgs.fd
     pkgs.htop
     pkgs.watch

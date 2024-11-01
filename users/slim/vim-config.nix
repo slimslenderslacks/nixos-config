@@ -40,7 +40,7 @@ parser_config.proto = {
 
 ---------------------------------------------------------------------
 -- Add our treesitter textobjects
-require'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup {
   textobjects = {
     select = {
       enable = true,
@@ -163,8 +163,8 @@ require("lazy").setup({
     'slimslenderslacks/nvim-lspconfig',
   },
   {
-    'slimslenderslacks/nvim-docker-ai',
-    dir = '/Users/slim/slimslenderslacks/nvim-docker-ai',
+    'slimslenderslacks/nvim-docker',
+    dir = '/Users/slim/slimslenderslacks/nvim-docker',
     lazy = false,
     dependencies = {
       'Olical/aniseed',
