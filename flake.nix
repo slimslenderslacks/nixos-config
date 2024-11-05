@@ -52,6 +52,15 @@
       url = "github:itspriddle/vim-marked/v1.0.0";
       flake = false;
     };
+
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+
+      # Only need unstable until the lpeg fix hits mainline, probably
+      # not very long... can safely switch back for 23.11.
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     nvim-conform.url = "github:stevearc/conform.nvim/v7.1.0";
     nvim-conform.flake = false;
     nvim-dressing.url = "github:stevearc/dressing.nvim";
