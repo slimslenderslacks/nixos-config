@@ -61,6 +61,10 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
+
     nvim-conform.url = "github:stevearc/conform.nvim/v7.1.0";
     nvim-conform.flake = false;
     nvim-dressing.url = "github:stevearc/dressing.nvim";

@@ -82,6 +82,12 @@ in {
     # atuin
     pkgs.atuin
 
+    # daytona is an overlay from pkgs/daytona 
+    pkgs.daytonaai-bin
+
+    # use the ghostty input
+    # inputs.ghostty.packages.${pkgs.system}.default
+
   ] ++ (lib.optionals isDarwin [
     # This is automatically setup on Linux
     pkgs.cachix
@@ -125,6 +131,7 @@ in {
     "${sources.tree-sitter-proto}/queries/highlights.scm";
   xdg.configFile."nvim/queries/proto/textobjects.scm".source =
     ./textobjects.scm;
+  xdg.configFile."ghostty/config".text = builtins.readFile ./ghostty;
 
   #---------------------------------------------------------------------
   # Programs
@@ -143,9 +150,9 @@ in {
   programs.starship.enable = true;
   programs.starship.settings = {
     add_newline = false;
-    format = "$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
+    format = "$username$git_branch$git_status$directory$jobs$cmd_duration$character";
     shlvl = {
-      disabled = false;
+      disabled = true;
       symbol = "ﰬ";
       style = "bright-red bold";
     };

@@ -106,6 +106,9 @@ _bb_complete() {
 # autocomplete filenames as well
 complete -F _bb_complete -o bashdefault -o default bb
 
+# Homebrew
+export PATH="/opt/homebrew/bin:$PATH"
+
 #function op_login {
     #eval $(op signin --account atomist.1password.com)
     #eval $(export_secrets)
