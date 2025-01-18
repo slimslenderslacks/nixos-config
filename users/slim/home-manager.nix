@@ -88,6 +88,8 @@ in {
     # use the ghostty input
     # inputs.ghostty.packages.${pkgs.system}.default
 
+    pkgs.pngpaste
+
   ] ++ (lib.optionals isDarwin [
     # This is automatically setup on Linux
     pkgs.cachix
