@@ -75,7 +75,7 @@ in {
     pkgs.vhs
 
     # Python dev
-    pkgs.nodePackages.pyright
+    #pkgs.nodePackages.pyright
     
     inputs.dagger.packages.${pkgs.system}.dagger
 

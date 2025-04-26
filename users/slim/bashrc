@@ -1,40 +1,39 @@
 alias ls='ls -GFt'
+
+# Git
 alias gs='git status'
 alias ga='git add'
 alias gd='git diff'
 alias gc='git commit'
 alias ggraph='git log --all --decorate --oneline --graph'
+alias tag-list='git tag --list --sort=v:refname | tail -5'
 alias git-amend-no-edit='git commit -a --amend --no-edit'
+
+# 1password
 alias op-signin='eval $(op signin atomist)'
 alias op-export='eval $(export_secrets)'
-alias tag-list='git tag --list --sort=v:refname | tail -5'
+
+# vim
 alias vi='echo -en "\e]0; $(basename $(pwd)) \a"; nvim'
 alias vim='echo -en "\e]0; $(basename $(pwd)) \a"; nvim'
+
 alias title='echo -en "\e]0; $(basename $(pwd)) \a"'
 alias bb-repl='op-export && bb --nrepl-server -o'
-alias atm-token='eval $(atm-bb jwt-token)'
-alias atm-staging-token='eval $(atm-bb cli create-jwt --staging)'
-alias docker-pty='socat -d -d ~/Library/Containers/com.docker.docker/Data/debug-shell.sock pty,rawer'
 alias sign-file='ssh-keygen -Y sign -f ~/.ssh/id_rsa -n file'
 
-alias skill-simulate='docker run -v ${PWD}:/skill docker/atomist-simulate-tx'
-alias docker-vm='docker run -it --rm --privileged --pid=host justincormack/nsenter1'
-alias watchfs='docker run -it -v ${PWD}:/skill slimslenderslacks/fswatch /skill'
-alias local-skill='docker run --rm --init -it --add-host host.docker.internal:host-gateway -v ${PWD}:/skill -v /var/run/docker.sock:/var/run/docker.sock atomist/local-skill --pwd /skill --workspace ${TEAM} --apikey "$(< ~/.secrets/atomist-apikey)" --host-dir ${PWD} --watch'
-alias lsp-ps='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock vonwig/lsp-ls'
-alias dive='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -e DOCKER_API_VERSION=1.37 wagoodman/dive:latest'
-alias docker-desktop='open docker-desktop://dashboard/open'
-
-alias k="kubectl"
+# Docker
 alias d="docker"
-alias a='export AWS_PROFILE=$(aws configure list-profiles | fzf)'
-alias ar='infra-cli aws init -y'
-alias al='infra-cli aws login -y'
-alias ac='eval $(aws configure export-credentials --format env)'
-alias aws-sso-init='infra-cli aws init'
-alias aws-sso-login='infra-cli aws login'
-alias aws-sso-temp-creds='eval $(aws configure export-credentials --format env)'
-alias eks='infra-cli aws configEks'
+alias docker-vm='docker run -it --rm --privileged --pid=host justincormack/nsenter1'
+alias docker-desktop='open docker-desktop://dashboard/open'
+alias docker-pty='socat -d -d ~/Library/Containers/com.docker.docker/Data/debug-shell.sock pty,rawer'
+alias dive='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -e DOCKER_API_VERSION=1.37 wagoodman/dive:latest'
+alias docker-lsp-ps='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock vonwig/lsp-ls'
+alias docker-mcp-registry='docker run --rm -v docker-prompts:/prompts busybox /bin/sh -c "cat /prompts/registry.yaml"'
+alias docker-mcp-log='docker run --name docker_mcp_log --rm -t --init -v docker-prompts:/prompts alpine:latest tail -f /prompts/log/docker-mcp-server.out'
+
+function docker-registry {
+  docker run --rm -v docker-prompts:/prompts busybox /bin/sh -c "echo '$1' > /prompts/registry.yaml"
+}
 
 # How do you call a bash function
 # How do you pop args in a bash function
