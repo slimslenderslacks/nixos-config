@@ -57,7 +57,6 @@ in {
 
     pkgs.gopls
     #pkgs.yaml-language-server
-    pkgs.zigpkgs.master
 
     # Node is required for Copilot.vim
     pkgs.nodejs
@@ -88,12 +87,11 @@ in {
     # use the ghostty input
     # inputs.ghostty.packages.${pkgs.system}.default
 
-    pkgs.pngpaste
-
   ] ++ (lib.optionals isDarwin [
     # This is automatically setup on Linux
     pkgs.cachix
     pkgs.tailscale
+    pkgs.pngpaste
   ]) ++ (lib.optionals (isLinux && !isWSL) [
     pkgs.chromium
     pkgs.firefox
@@ -174,6 +172,10 @@ in {
 
   programs.direnv= {
     enable = true;
+    nix-direnv = {
+      enable = true;
+      package = pkgs.nix-direnv;
+    };
   };
 
   programs.git = {
@@ -274,7 +276,6 @@ in {
       #customVim.vim-misc
       customVim.vim-pgsql
       customVim.vim-tla
-      customVim.vim-zig
       customVim.pigeon
       #customVim.AfterColors
 

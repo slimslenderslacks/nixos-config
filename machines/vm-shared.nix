@@ -73,12 +73,12 @@ in {
   # setup windowing environment
   services.xserver = if linuxGnome then {
     enable = true;
-    layout = "us";
+    xkb.layout = "us";
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
   } else {
     enable = true;
-    layout = "us";
+    xkb.layout = "us";
     dpi = 220;
 
     desktopManager = {
@@ -115,7 +115,7 @@ in {
   fonts = {
     fontDir.enable = true;
 
-    fonts = [
+    packages = [
       pkgs.fira-code
       pkgs.jetbrains-mono
     ];
@@ -127,8 +127,6 @@ in {
     cachix
     gnumake
     killall
-    niv
-    rxvt_unicode
     xclip
 
     # For hypervisors that support auto-resizing, this script forces it.
@@ -153,8 +151,8 @@ in {
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  services.openssh.passwordAuthentication = true;
-  services.openssh.permitRootLogin = "no";
+  services.openssh.settings.PasswordAuthentication = true;
+  services.openssh.settings.PermitRootLogin = "no";
 
   # Disable the firewall since we're in a VM and we want to make it
   # easy to visit stuff in here. We only use NAT networking anyways.

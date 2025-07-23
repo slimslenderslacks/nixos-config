@@ -22,7 +22,7 @@ stdenvNoCC.mkDerivation rec {
         };
         "aarch64-linux" = {
           url = "https://download.daytona.io/daytona/v0.50.0/daytona-linux-arm64";
-          hash = "";
+          hash = "sha256-K02vDcRIIORaWG+UWGfdXV44ZxTQupQ72izDdiKJmqI=";
         };
         "aarch64-darwin" = {
           url = "https://download.daytona.io/daytona/v0.50.0/daytona-darwin-arm64";
