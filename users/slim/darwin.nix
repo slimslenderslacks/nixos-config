@@ -32,4 +32,7 @@
     home = "/Users/slim";
     shell = pkgs.bashInteractive;
   };
+
+  # Required for some settings like homebrew to know what user to apply to.
+  # system.primaryUser = "slim";
 }
