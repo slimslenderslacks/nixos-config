@@ -43,11 +43,6 @@
       flake = false;
     };
 
-    vim-copilot = {
-      url = "github:github/copilot.vim/v1.47.0";
-      flake = false;
-    };
-
     vim-marked = {
       url = "github:itspriddle/vim-marked/v1.0.0";
       flake = false;

@@ -6,6 +6,9 @@ let
   sources = import ../../nix/sources.nix;
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
+  gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
+    gke-gcloud-auth-plugin
+  ]);
 
   # For our MANPAGER env var
   # https://github.com/sharkdp/bat/issues/1145
@@ -32,6 +35,7 @@ in {
   # per-project flakes sourced with direnv and nix-shell, so this is
   # not a huge list.
   home.packages = [
+    gdk
     pkgs._1password
     pkgs.curl
     pkgs.fd
@@ -93,6 +97,12 @@ in {
 
     pkgs.chezmoi
 
+    pkgs.oras
+
+    pkgs.crane
+
+    pkgs.python3
+
   ] ++ (lib.optionals isDarwin [
     # This is automatically setup on Linux
     pkgs.cachix
@@ -137,7 +147,6 @@ in {
     "${sources.tree-sitter-proto}/queries/highlights.scm";
   xdg.configFile."nvim/queries/proto/textobjects.scm".source =
     ./textobjects.scm;
-  xdg.configFile."ghostty/config".text = builtins.readFile ./ghostty;
 
   #---------------------------------------------------------------------
   # Programs
@@ -155,7 +164,7 @@ in {
 
   programs.starship.enable = true;
   programs.starship.settings = {
-    add_newline = false;
+    add_newline = true;
     format = "$username$git_branch$git_status$directory$jobs$cmd_duration$character";
     shlvl = {
       disabled = true;
@@ -273,7 +282,6 @@ in {
     withPython3 = true;
 
     plugins = with pkgs; [
-      customVim.vim-copilot
       customVim.vim-marked
       customVim.vim-cue
       customVim.vim-fish
@@ -313,8 +321,6 @@ in {
       vimPlugins.vim-nix
       vimPlugins.typescript-vim
     ];
-
-    extraConfig = (import ./vim-config.nix) { inherit sources; };
   };
 
   services.gpg-agent = {

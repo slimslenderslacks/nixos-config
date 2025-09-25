@@ -5,10 +5,6 @@ self: super:
 let sources = import ../../nix/sources.nix; in rec {
   # My vim config
   customVim = with self; {
-    vim-copilot = vimUtils.buildVimPlugin {
-      name = "vim-copilot";
-      src = inputs.vim-copilot;
-    };
 
     vim-marked = vimUtils.buildVimPlugin {
       name = "vim-marked";

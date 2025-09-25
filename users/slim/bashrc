@@ -31,6 +31,8 @@ alias docker-lsp-ps='docker run --rm -v /var/run/docker.sock:/var/run/docker.soc
 alias docker-mcp-registry='docker run --rm -v docker-prompts:/prompts busybox /bin/sh -c "cat /prompts/registry.yaml"'
 alias docker-mcp-log='docker run --name docker_mcp_log --rm -t --init -v docker-prompts:/prompts alpine:latest tail -f /prompts/log/docker-mcp-server.out'
 alias docker-ps-hidden='docker ps -f LABEL=com.docker.desktop.service=true'
+alias mcp-inspector='npx @modelcontextprotocol/inspector'
+alias goose-session='goose session --with-remote-extension'
 
 function docker-registry {
   docker run --rm -v docker-prompts:/prompts busybox /bin/sh -c "echo '$1' > /prompts/registry.yaml"
