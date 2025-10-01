@@ -63,6 +63,11 @@ in {
     pkgs.pstree
 
     pkgs.gopls
+    pkgs.go
+    pkgs.go-task
+    pkgs.golangci-lint
+    pkgs.gotools
+    pkgs.gofumpt
     #pkgs.yaml-language-server
 
     # Node is required for Copilot.vim
