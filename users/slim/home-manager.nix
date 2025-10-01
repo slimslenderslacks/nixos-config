@@ -304,8 +304,6 @@ in {
       # customVim.nvim-lspconfig
       # customVim.nvim-plenary # required for telescope
       # customVim.nvim-telescope
-      customVim.nvim-treesitter
-      customVim.nvim-treesitter-textobjects
       customVim.nvim-gen
       customVim.nvim-ollama
       customVim.vim-goyo

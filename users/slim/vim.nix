@@ -109,11 +109,6 @@ let sources = import ../../nix/sources.nix; in rec {
       buildPhase = ":";
     };
 
-    nvim-treesitter = vimUtils.buildVimPlugin {
-      name = "nvim-treesitter";
-      src = inputs.nvim-treesitter;
-    };
-
     nvim-lspconfig = vimUtils.buildVimPlugin {
       name = "nvim-lspconfig";
       src = sources.nvim-lspconfig;
@@ -126,11 +121,6 @@ let sources = import ../../nix/sources.nix; in rec {
     nvim-lspinstall = vimUtils.buildVimPlugin {
       name = "nvim-lspinstall";
       src = sources.nvim-lspinstall;
-    };
-
-    nvim-treesitter-textobjects = vimUtils.buildVimPlugin {
-      name = "nvim-treesitter-textobjects";
-      src = sources.nvim-treesitter-textobjects;
     };
 
     nvim-gen = vimUtils.buildVimPlugin {

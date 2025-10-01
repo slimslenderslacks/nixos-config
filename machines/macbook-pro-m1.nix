@@ -2,6 +2,8 @@
 
   system.stateVersion = 5;
 
+  ids.gids.nixbld = 30000;
+
   # Keep in async with vm-shared.nix. (todo: pull this out into a file)
   nix = {
     # We need to enable flakes

@@ -5,6 +5,8 @@
     (import ./vim.nix { inherit inputs; })
   ];
 
+  system.primaryUser="slim";
+
   homebrew = {
     enable = true;
     onActivation = {
