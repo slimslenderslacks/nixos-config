@@ -9,10 +9,6 @@ alias ggraph='git log --all --decorate --oneline --graph'
 alias tag-list='git tag --list --sort=v:refname | tail -5'
 alias git-amend-no-edit='git commit -a --amend --no-edit'
 
-# 1password
-alias op-signin='eval $(op signin atomist)'
-alias op-export='eval $(export_secrets)'
-
 # vim
 alias vi='echo -en "\e]0; $(basename $(pwd)) \a"; nvim'
 alias vim='echo -en "\e]0; $(basename $(pwd)) \a"; nvim'
@@ -31,8 +27,11 @@ alias docker-lsp-ps='docker run --rm -v /var/run/docker.sock:/var/run/docker.soc
 alias docker-mcp-registry='docker run --rm -v docker-prompts:/prompts busybox /bin/sh -c "cat /prompts/registry.yaml"'
 alias docker-mcp-log='docker run --name docker_mcp_log --rm -t --init -v docker-prompts:/prompts alpine:latest tail -f /prompts/log/docker-mcp-server.out'
 alias docker-ps-hidden='docker ps -f LABEL=com.docker.desktop.service=true'
-alias mcp-inspector='npx @modelcontextprotocol/inspector'
+alias mcp-inspector='npx @modelcontextprotocol/inspector@latest'
 alias goose-session='goose session --with-remote-extension'
+alias op-signin='op signin --account my.1password.com'
+alias env-anthropic='export ANTHROPIC_API_KEY=$(op read op://Personal/bwvhyey4plej6yuhy6fprkwpwa/value)'
+alias env-openai='export OPENAI_API_KEY=$(op read op://Personal/dxl5k576lpqb52h2ilzzohtmye/value)'
 
 function docker-registry {
   docker run --rm -v docker-prompts:/prompts busybox /bin/sh -c "echo '$1' > /prompts/registry.yaml"
@@ -77,9 +76,9 @@ function daws-creds {
   echo "Exported AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN"
 }
 
+export PATH=~/docker/mcp-gateway/dist:~/docker/cagent/bin:~/.local/bin/:/opt/homebrew/bin:$PATH
+
 export IN_REPL=true
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export PATH=~/gcp/google-cloud-sdk/bin:~/.local/bin/:$PATH
 export AWS_IAM_USER=jim
 export ATOMIST_ROOT=~/atomist
 export BB_SCRIPTS=/Users/slim/atmhq/bb_scripts
@@ -105,69 +104,4 @@ _bb_complete() {
     # COMPREPLY+=(`bb-util tasks |tail -n +3 |cut -f1 -d ' '`)
     COMPREPLY=( $(compgen -W "$(bb tasks |tail -n +3 |cut -f1 -d ' ')" -- ${COMP_WORDS[COMP_CWORD]}) );
 }
-# autocomplete filenames as well
-complete -F _bb_complete -o bashdefault -o default bb
-
-# Homebrew
-export PATH="/opt/homebrew/bin:$PATH"
-
-#function op_login {
-    #eval $(op signin --account atomist.1password.com)
-    #eval $(export_secrets)
-#}
-
-#function datomic_access {
-  #aws-creds $1 sts
-  #datomic client access production1
-#}
-
-#function start-staging-node {
-    #export GRAPHQL_ENDPOINT=https://automation-staging.atomist.services/graphql
-    #export IN_REPL=true
-    #node index.js
-#}
-
-#function staging {
-    #gcloud config set account jim@atomist.com
-    #gcloud config set project atomist-internal-staging
-    #gcloud container clusters get-credentials k8s-internal-staging-ae6cd4b --zone us-east1
-    #kubectl config use-context staging
-#}
-
-#function production {
-    #gcloud config set account jim@atomist.com
-    #gcloud config set project atm-internal-production
-    #gcloud container clusters get-credentials k8s-internal-production-3486583 --zone us-east1
-    #k config use-context gke_atm-internal-production_us-east1_k8s-internal-production-3486583
-    #k config set-context --current --namespace=api-production
-#}
-
-#function customer-skill-production {
-    #gcloud config set account jim@atomist.com
-    #gcloud config set project atomist-customer-skill-product
-#}
-
-#function personalsdm {
-    #gcloud config set account slimslenderslacks@gmail.com
-    #gcloud config set project personalsdm-216019
-#}
-
-#function title {
-    #export TITLE="$1"
-#}
-
-## npm completions
-##[ -f /Users/slim/.npm/npm.sh ] && source /Users/slim/.npm/npm.sh
-
-### completions
-
-##source $(brew --prefix)/etc/bash_completion
-##source ~/.minikube-completion
-source ~/atmhq/bb_scripts/completions.sh
-
-#function k-secret {
-    #k get secret $1 -o json | jq '.data.config' | xargs echo | base64 --decode | jq '.'
-#}
-
-#export PATH=~/datomic-cli:$PATH
 
