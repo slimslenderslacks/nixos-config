@@ -14,7 +14,6 @@ alias vi='echo -en "\e]0; $(basename $(pwd)) \a"; nvim'
 alias vim='echo -en "\e]0; $(basename $(pwd)) \a"; nvim'
 
 alias title='echo -en "\e]0; $(basename $(pwd)) \a"'
-alias bb-repl='op-export && bb --nrepl-server -o'
 alias sign-file='ssh-keygen -Y sign -f ~/.ssh/id_rsa -n file'
 
 # Docker
@@ -88,21 +87,3 @@ export JWT_CREATOR="/Users/slim/atmhq/jwt-creator"
 export GPG_TTY=$(tty)
 
 export NIXNAME=macbook-pro-m1
-
-function atm-bb {
-    export BB_WD=${PWD}
-    pushd $BB_SCRIPTS > /dev/null
-    bb cli "$@"
-    popd > /dev/null
-}
-
-# my bb-util tasks
-. ~/slimslenderslacks/bb-util/init.bash
-
-# completion whenever you run bb and your pwd as a bb.edn
-_bb_complete() {
-    # starting on line3 of tasks output, take the first field (which will be the task name)
-    # COMPREPLY+=(`bb-util tasks |tail -n +3 |cut -f1 -d ' '`)
-    COMPREPLY=( $(compgen -W "$(bb tasks |tail -n +3 |cut -f1 -d ' ')" -- ${COMP_WORDS[COMP_CWORD]}) );
-}
-

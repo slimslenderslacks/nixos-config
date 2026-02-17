@@ -16,11 +16,13 @@
     };
     casks  = [
       "ghostty"
-      #"1password"
-      #"alfred"
-      #"cleanshot"
-      #"discord"
-      #"google-chrome"
+      "google-chrome"
+      "1password"
+      "alfred"
+      "cleanshot"
+      "discord"
+      "slack"
+      "claude-code"
     ];
     brews = [
       "bash"

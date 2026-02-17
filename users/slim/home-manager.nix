@@ -47,6 +47,8 @@ in {
     pkgs.graphviz
     pkgs.screen
     pkgs.socat
+    pkgs.gnupg
+    pkgs.secretspec
 
     pkgs.thefuck
     pkgs.zoxide
@@ -95,9 +97,6 @@ in {
 
     # atuin
     pkgs.atuin
-
-    # daytona is an overlay from pkgs/daytona 
-    pkgs.daytonaai-bin
 
     # use the ghostty input
     # inputs.ghostty.packages.${pkgs.system}.default

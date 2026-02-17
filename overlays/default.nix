@@ -6,7 +6,6 @@ final: prev: {
   create-dmg = final.callPackage ../pkgs/create-dmg.nix {};
   nomad-bin = final.callPackage ../pkgs/nomad-bin.nix {};
   terraform-bin = final.callPackage ../pkgs/terraform-bin.nix {};
-  daytonaai-bin = final.callPackage ../pkgs/daytonaai.nix {};
 
   # Fix 1password not working properly on Linux arm64.
   #_1password = final.callPackage ../pkgs/1password.nix {};
