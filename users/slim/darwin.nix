@@ -14,6 +14,9 @@
       upgrade = true;
       cleanup = "uninstall";
     };
+    taps = [
+      "jganoff/tap"
+    ];
     casks  = [
       "ghostty"
       "google-chrome"
@@ -27,6 +30,7 @@
     brews = [
       "bash"
       "pinentry-mac"
+      "jganoff/tap/wsp"
     ];
   };
 
