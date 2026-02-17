@@ -32,6 +32,7 @@ alias goose-session='goose session --with-remote-extension'
 alias op-signin='op signin --account my.1password.com'
 alias env-anthropic='export ANTHROPIC_API_KEY=$(op read op://Personal/bwvhyey4plej6yuhy6fprkwpwa/value)'
 alias env-openai='export OPENAI_API_KEY=$(op read op://Personal/dxl5k576lpqb52h2ilzzohtmye/value)'
+alias lv='/Users/slim/slimslenderslacks/logviewer/logviewer /Users/slim/.docker/mcp/logs'
 
 function docker-registry {
   docker run --rm -v docker-prompts:/prompts busybox /bin/sh -c "echo '$1' > /prompts/registry.yaml"

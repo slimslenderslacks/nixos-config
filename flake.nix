@@ -68,6 +68,11 @@
     nvim-telescope.flake = false;
     nvim-web-devicons.url = "github:nvim-tree/nvim-web-devicons";
     nvim-web-devicons.flake = false;
+
+    beads = {
+      url = "github:steveyegge/beads";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs: let

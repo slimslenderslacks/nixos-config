@@ -90,6 +90,9 @@ in {
     
     inputs.dagger.packages.${pkgs.system}.dagger
 
+    # beads - AI-supervised issue tracker
+    inputs.beads.packages.${pkgs.system}.default
+
     # atuin
     pkgs.atuin
 
