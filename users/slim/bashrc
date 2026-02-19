@@ -1,37 +1,6 @@
-alias ls='ls -GFt'
-
-# Git
-alias gs='git status'
-alias ga='git add'
-alias gd='git diff'
-alias gc='git commit'
-alias ggraph='git log --all --decorate --oneline --graph'
-alias tag-list='git tag --list --sort=v:refname | tail -5'
-alias git-amend-no-edit='git commit -a --amend --no-edit'
-
-# vim
-alias vi='echo -en "\e]0; $(basename $(pwd)) \a"; nvim'
-alias vim='echo -en "\e]0; $(basename $(pwd)) \a"; nvim'
-
-alias title='echo -en "\e]0; $(basename $(pwd)) \a"'
-alias sign-file='ssh-keygen -Y sign -f ~/.ssh/id_rsa -n file'
-
-# Docker
-alias d="docker"
-alias docker-vm='docker run -it --rm --privileged --pid=host justincormack/nsenter1'
-alias docker-desktop='open docker-desktop://dashboard/open'
-alias docker-pty='socat -d -d ~/Library/Containers/com.docker.docker/Data/debug-shell.sock pty,rawer'
-alias dive='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -e DOCKER_API_VERSION=1.37 wagoodman/dive:latest'
-alias docker-lsp-ps='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock vonwig/lsp-ls'
-alias docker-mcp-registry='docker run --rm -v docker-prompts:/prompts busybox /bin/sh -c "cat /prompts/registry.yaml"'
-alias docker-mcp-log='docker run --name docker_mcp_log --rm -t --init -v docker-prompts:/prompts alpine:latest tail -f /prompts/log/docker-mcp-server.out'
-alias docker-ps-hidden='docker ps -f LABEL=com.docker.desktop.service=true'
-alias mcp-inspector='npx @modelcontextprotocol/inspector@latest'
-alias goose-session='goose session --with-remote-extension'
-alias op-signin='op signin --account my.1password.com'
-alias env-anthropic='export ANTHROPIC_API_KEY=$(op read op://Personal/bwvhyey4plej6yuhy6fprkwpwa/value)'
-alias env-openai='export OPENAI_API_KEY=$(op read op://Personal/dxl5k576lpqb52h2ilzzohtmye/value)'
-alias lv='/Users/slim/slimslenderslacks/logviewer/logviewer /Users/slim/.docker/mcp/logs'
+if [ -f "$XDG_CONFIG_HOME/aliases/include.sh" ]; then
+  . "$XDG_CONFIG_HOME/aliases/include.sh"
+fi
 
 function docker-registry {
   docker run --rm -v docker-prompts:/prompts busybox /bin/sh -c "echo '$1' > /prompts/registry.yaml"

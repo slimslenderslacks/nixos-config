@@ -64,13 +64,19 @@ in {
     pkgs.tree
     pkgs.pstree
 
+    # golang
     pkgs.gopls
     pkgs.go
     pkgs.go-task
+    pkgs.delve
     pkgs.golangci-lint
     pkgs.gotools
     pkgs.gofumpt
     #pkgs.yaml-language-server
+
+    # rust
+    pkgs.cargo
+    pkgs.just
 
     # Node is required for Copilot.vim
     pkgs.nodejs
