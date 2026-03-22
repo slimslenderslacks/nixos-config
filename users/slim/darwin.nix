@@ -16,6 +16,7 @@
     };
     taps = [
       "jganoff/tap"
+      "docker/agents-tap"
     ];
     casks  = [
       "ghostty"
@@ -31,6 +32,10 @@
       "bash"
       "pinentry-mac"
       "jganoff/tap/wsp"
+      "docker/agents-tap/gantry-agents"
+      "docker/agents-tap/gantry-tray"
+      "gh"
+      "opencode"
     ];
   };
 

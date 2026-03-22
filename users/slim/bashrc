@@ -45,7 +45,7 @@ function daws-creds {
   echo "Exported AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN"
 }
 
-export PATH=~/docker/mcp-gateway/dist:~/docker/cagent/bin:~/.local/bin/:/opt/homebrew/bin:$PATH
+export PATH=~/go/bin:~/.local/bin/:/opt/homebrew/bin:$PATH
 
 export IN_REPL=true
 export AWS_IAM_USER=jim

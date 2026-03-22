@@ -72,10 +72,13 @@ in {
     pkgs.golangci-lint
     pkgs.gotools
     pkgs.gofumpt
+    pkgs.mise
+    pkgs.lefthook
     #pkgs.yaml-language-server
 
     # rust
-    pkgs.cargo
+    pkgs.rustup
+    pkgs.rustc
     pkgs.just
 
     # Node is required for Copilot.vim
@@ -115,6 +118,8 @@ in {
     pkgs.crane
 
     pkgs.python3
+
+    pkgs.signal-cli
 
   ] ++ (lib.optionals isDarwin [
     # This is automatically setup on Linux
