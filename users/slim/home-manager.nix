@@ -36,7 +36,6 @@ in {
   # not a huge list.
   home.packages = [
     gdk
-    pkgs._1password
     pkgs.curl
     pkgs.fd
     pkgs.htop
@@ -100,9 +99,6 @@ in {
     #pkgs.nodePackages.pyright
     
     inputs.dagger.packages.${pkgs.system}.dagger
-
-    # beads - AI-supervised issue tracker
-    inputs.beads.packages.${pkgs.system}.default
 
     # atuin
     pkgs.atuin
