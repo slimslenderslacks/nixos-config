@@ -27,6 +27,7 @@
       "discord"
       "slack"
       "claude-code"
+      "1password-cli"
     ];
     brews = [
       "bash"

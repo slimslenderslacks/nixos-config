@@ -82,6 +82,16 @@
         claude-code = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.claude-code;
         nushell = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.nushell;
         secretspec = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.secretspec;
+
+        # go.work requires go >= 1.26.2; nixpkgs-unstable only has 1.26.1
+        go = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.go.overrideAttrs (old: rec {
+          version = "1.26.2";
+          src = prev.fetchurl {
+            url = "https://go.dev/dl/go${version}.src.tar.gz";
+            hash = "sha256-LpHrtpR6lulDb7KzkmqIAu/mOm03Xf/sT4Kqnb1v1Ds=";
+          };
+        });
+        gopls = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.gopls;
       })
     ];
 

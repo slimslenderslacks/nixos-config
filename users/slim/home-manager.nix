@@ -117,6 +117,10 @@ in {
 
     pkgs.signal-cli
 
+    # Ops
+    pkgs.awscli2
+    pkgs.kubectl
+
   ] ++ (lib.optionals isDarwin [
     # This is automatically setup on Linux
     pkgs.cachix
@@ -291,7 +295,9 @@ in {
 
   programs.neovim = {
     enable = true;
-    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default.overrideAttrs (old: {
+      doCheck = false;
+    });
 
     withPython3 = true;
 
