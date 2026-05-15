@@ -237,7 +237,6 @@ in {
   programs.tmux = {
     enable = true;
     terminal = "xterm-256color";
-    shortcut = "l";
     secureSocket = false;
 
     extraConfig = ''

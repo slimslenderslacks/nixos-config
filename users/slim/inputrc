@@ -10,4 +10,10 @@ $if Bash
   # will show completions. i.e. !!_ (where _ is space)
   # will expand !! for you.
   Space: magic-space
+
+  # Arrow keys — history search based on typed prefix
+  "\e[A": history-search-backward
+  "\e[B": history-search-forward
+  "\eOA": history-search-backward
+  "\eOB": history-search-forward
 $endif
