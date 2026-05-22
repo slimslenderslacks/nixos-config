@@ -216,8 +216,11 @@ in {
     userName = "Jim Clark";
     userEmail = "slimslenderslacks@gmail.com";
     signing = {
-      key = "73305B2338AAA7BE";
+      format = "ssh";
+      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGRl2pAhz7tZnmZ1oZggixhBLF47RvKss7WEXYRsZrp9";
       signByDefault = true;
+    } // lib.optionalAttrs isDarwin {
+      signer = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
     };
     aliases = {
       prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(r) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
