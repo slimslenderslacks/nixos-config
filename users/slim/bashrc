@@ -2,6 +2,10 @@ if [ -f "$XDG_CONFIG_HOME/aliases/include.sh" ]; then
   . "$XDG_CONFIG_HOME/aliases/include.sh"
 fi
 
+if [ -f "$XDG_CONFIG_HOME/env/env.sh" ]; then
+  . "$XDG_CONFIG_HOME/env/env.sh"
+fi
+
 function docker-registry {
   docker run --rm -v docker-prompts:/prompts busybox /bin/sh -c "echo '$1' > /prompts/registry.yaml"
 }
