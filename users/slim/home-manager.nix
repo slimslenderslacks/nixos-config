@@ -245,9 +245,20 @@ in {
     extraConfig = ''
       set -ga terminal-overrides ",*256col*:Tc"
 
+      # Required for Shift+Enter (kitty keyboard protocol) to pass through
+      # Parallax PTY -> tmux -> Claude Code.
+      set -g extended-keys always
+
+      set -g detach-on-destroy off
+      set -g mouse on
+
       set -g @dracula-show-battery false
       set -g @dracula-show-network false
       set -g @dracula-show-weather false
+
+      set -s user-keys[0] "\e[5;30012~"
+      unbind C-b
+      set -g prefix User0
 
       bind -n C-k send-keys "clear"\; send-keys "Enter"
 
