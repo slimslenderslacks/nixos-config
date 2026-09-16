@@ -109,6 +109,8 @@ in {
 
     pkgs.chezmoi
 
+    pkgs.cmux
+
     pkgs.oras
 
     pkgs.crane
@@ -244,6 +246,11 @@ in {
 
     extraConfig = ''
       set -ga terminal-overrides ",*256col*:Tc"
+
+      # Forward modified keys (e.g. Shift-Enter) through to programs like
+      # claude-code instead of collapsing them into a bare Enter.
+      set -s extended-keys on
+      set -as terminal-features ",*:extkeys"
 
       set -g detach-on-destroy off
       set -g mouse on

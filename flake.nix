@@ -80,16 +80,22 @@
 
         # Want the latest version of these
         claude-code = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.claude-code;
+        cmux = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.cmux;
         nushell = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.nushell;
         secretspec = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.secretspec;
 
-        # go.work requires go >= 1.26.2; nixpkgs-unstable only has 1.26.1
+        # Pin newer Go than nixpkgs-unstable currently ships.
         go = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.go.overrideAttrs (old: rec {
-          version = "1.26.2";
+          version = "1.27.1";
           src = prev.fetchurl {
             url = "https://go.dev/dl/go${version}.src.tar.gz";
-            hash = "sha256-LpHrtpR6lulDb7KzkmqIAu/mOm03Xf/sT4Kqnb1v1Ds=";
+            hash = "sha256-TkCKuuEm2Ra2FkYnGT8sVPDjyhMS1pO4bbRfhiqyOLE=";
           };
+          # The nixpkgs go_no_vendor_checks patch targets Go 1.26.x and no longer
+          # applies to 1.27.1's cmd/go/internal/modload/import.go. Drop it.
+          patches = builtins.filter
+            (p: !(prev.lib.hasInfix "go_no_vendor_checks" (baseNameOf (toString p))))
+            old.patches;
         });
         gopls = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.gopls;
       })
