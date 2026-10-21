@@ -16,14 +16,9 @@
     };
     taps = [
       "jganoff/tap"
-      "docker/agents-tap"
     ];
     casks  = [
       "ghostty"
-      "google-chrome"
-      "1password"
-      "alfred"
-      "cleanshot"
       "discord"
       "slack"
       "claude-code"
