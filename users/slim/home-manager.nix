@@ -49,7 +49,6 @@ in {
     pkgs.gnupg
     pkgs.secretspec
 
-    pkgs.thefuck
     pkgs.zoxide
     pkgs.tldr
     pkgs.scc
@@ -98,8 +97,6 @@ in {
     # Python dev
     #pkgs.nodePackages.pyright
     
-    inputs.dagger.packages.${pkgs.system}.dagger
-
     # atuin
     pkgs.atuin
 
@@ -215,8 +212,6 @@ in {
 
   programs.git = {
     enable = true;
-    userName = "Jim Clark";
-    userEmail = "slimslenderslacks@gmail.com";
     signing = {
       format = "ssh";
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGRl2pAhz7tZnmZ1oZggixhBLF47RvKss7WEXYRsZrp9";
@@ -224,11 +219,15 @@ in {
     } // lib.optionalAttrs isDarwin {
       signer = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
     };
-    aliases = {
-      prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(r) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
-      root = "rev-parse --show-toplevel";
-    };
-    extraConfig = {
+    settings = {
+      aliases = {
+        prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(r) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
+        root = "rev-parse --show-toplevel";
+      };
+      user = {
+        email = "slimslenderslacks@gmail.com";
+        name = "Jim Clark";
+      };
       branch.autosetuprebase = "always";
       color.ui = true;
       core.askPass = ""; # needs to be empty to use terminal for ask pass
@@ -311,11 +310,17 @@ in {
 
   programs.neovim = {
     enable = true;
-    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default.overrideAttrs (old: {
-      doCheck = false;
-    });
+#    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default.overrideAttrs (old: {
+#      doCheck = false;
+#    });
+
+    withRuby = false;
 
     withPython3 = true;
+
+    initLua = ''
+      vim.cmd([[source $HOME/.config/nvim/my-init.vim]])
+    '';
 
     plugins = with pkgs; [
       customVim.vim-marked
