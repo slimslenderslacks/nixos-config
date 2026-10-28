@@ -131,6 +131,12 @@
       darwin = true;
     };
 
+    darwinConfigurations.macbook-pro-okta = mkSystem "macbook-pro-okta" {
+      system = "aarch64-darwin";
+      user   = "jim.clark";
+      darwin = true;
+    };
+
     darwinConfigurations.macbook-pro-x86 = mkSystem "macbook-pro-x86" {
       system = "x86_64-darwin";
       user   = "slim";

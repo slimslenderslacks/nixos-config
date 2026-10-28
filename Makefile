@@ -18,7 +18,7 @@ UNAME := $(shell uname)
 
 switch:
 ifeq ($(UNAME), Darwin)
-	NIXPKGS_ALLOW_UNFREE=1 nix build --impure --experimental-features "nix-command flakes" ".#darwinConfigurations.${NIXNAME}.system"
+	NIXPKGS_ALLOW_UNFREE=1 nix build --impure --experimental-features "nix-command flakes configurable-impure-env" ".#darwinConfigurations.${NIXNAME}.system"
 	sudo NIXPKGS_ALLOW_UNFREE=1 ./result/sw/bin/darwin-rebuild switch --impure --flake "$$(pwd)#${NIXNAME}"
 else
 	sudo NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nixos-rebuild switch --flake ".#${NIXNAME}"

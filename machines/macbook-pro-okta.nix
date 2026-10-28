@@ -1,0 +1,49 @@
+{ config, pkgs, ... }: {
+
+  system.stateVersion = 5;
+
+  ids.gids.nixbld = 350;
+
+  # Keep in async with vm-shared.nix. (todo: pull this out into a file)
+  nix = {
+    # We need to enable flakes
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      keep-outputs = true
+      keep-derivations = true
+    '';
+
+    # public binary cache that I use for all my derivations. You can keep
+    # this, use your own, or toss it. Its typically safe to use a binary cache
+    # since the data inside is checksummed.
+    settings = {
+      substituters = ["https://cache.iog.io"];
+      trusted-public-keys = ["hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="];
+    };
+  };
+
+  # zsh is the default shell on Mac and we want to make sure that we're
+  # configuring the rc correctly with nix-darwin paths.
+  programs.zsh.enable = true;
+  programs.zsh.shellInit = ''
+    # Nix
+    if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+      . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+    fi
+    # End Nix
+    '';
+
+  programs.fish.enable = true;
+  programs.fish.shellInit = ''
+    # Nix
+    if test -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+      source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+    end
+    # End Nix
+    '';
+
+  environment.shells = with pkgs; [ bashInteractive zsh fish ];
+  environment.systemPackages = with pkgs; [
+    cachix
+  ];
+}

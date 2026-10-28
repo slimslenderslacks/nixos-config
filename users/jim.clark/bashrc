@@ -1,0 +1,62 @@
+if [ -f "$XDG_CONFIG_HOME/aliases/include.sh" ]; then
+  . "$XDG_CONFIG_HOME/aliases/include.sh"
+fi
+
+if [ -f "$XDG_CONFIG_HOME/env/env.sh" ]; then
+  . "$XDG_CONFIG_HOME/env/env.sh"
+fi
+
+function docker-registry {
+  docker run --rm -v docker-prompts:/prompts busybox /bin/sh -c "echo '$1' > /prompts/registry.yaml"
+}
+
+# How do you call a bash function
+# How do you pop args in a bash function
+# In bash how does shift work
+function prompts {
+    host_dir=$1
+    prompts_dir=$2
+    shift 2
+    echo "host_dir: $host_dir"
+    echo "prompts_dir: $prompts_dir"
+    echo "extra_args: $@"
+    docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+	       --mount type=volume,source=docker-prompts,target=/prompts \
+	       --mount type=bind,source=/Users/slim/docker/labs-ai-tools-for-devs,target=/app/local \
+               --mount type=bind,source=$HOME/.openai-api-key,target=/root/.openai-api-key \
+	       --workdir /app \
+	       vonwig/prompts:latest \
+	         run --user jimclark106 \
+		     --platform "$(uname -o)" \
+		     --host-dir "$host_dir" \
+		     --prompts-dir "local/$prompts_dir" \
+                     "$@"
+}
+
+function verify-file {
+    ssh-keygen -Y verify -f ~/.ssh/allowed_signers -I $1 -n file -s $2 < $3
+}
+
+function daws-creds {
+  export AWS_PROFILE=SupplyChainEngineers-111664719423
+  aws sts get-caller-identity > /dev/null || aws sso login &&
+  aws sts get-caller-identity > /dev/null &&
+  JSON_BASEPATH="${HOME}/.aws/cli/cache"
+  json_file=$(ls -tr "${JSON_BASEPATH}" | tail -n1)
+  export AWS_ACCESS_KEY_ID=$(cat ${JSON_BASEPATH}/${json_file} | jq -r '.Credentials.AccessKeyId')
+  export AWS_SECRET_ACCESS_KEY=$(cat ${JSON_BASEPATH}/${json_file} | jq -r '.Credentials.SecretAccessKey')
+  export AWS_SESSION_TOKEN=$(cat ${JSON_BASEPATH}/${json_file} | jq -r '.Credentials.SessionToken')
+  echo "Exported AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN"
+}
+
+export PATH=/Applications/Ollama.app/Contents/Resources:~/go/bin:~/.local/bin/:/opt/homebrew/bin:$PATH
+
+export IN_REPL=true
+export AWS_IAM_USER=jim
+export ATOMIST_ROOT=~/atomist
+export BB_SCRIPTS=/Users/slim/atmhq/bb_scripts
+export BB_LOCAL=TRUE
+export JWT_CREATOR="/Users/slim/atmhq/jwt-creator"
+export GPG_TTY=$(tty)
+
+export NIXNAME=macbook-pro-okta
