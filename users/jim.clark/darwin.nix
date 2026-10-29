@@ -24,6 +24,10 @@
       "claude-code"
       "1password-cli"
       "alfred"
+      {
+        name = "logseq";
+        args = { appdir = "~/Applications"; };
+      }
     ];
     brews = [
       "bash"

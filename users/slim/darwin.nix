@@ -24,6 +24,7 @@
       "claude-code"
       "1password-cli"
       "alfred"
+      "logseq"
     ];
     brews = [
       "bash"
