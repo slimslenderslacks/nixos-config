@@ -25,6 +25,7 @@
       "1password-cli"
       "alfred"
       "logseq"
+      "migsilva89/imark/imark"
     ];
     brews = [
       "bash"

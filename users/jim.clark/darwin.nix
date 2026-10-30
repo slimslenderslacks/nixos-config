@@ -28,6 +28,7 @@
         name = "logseq";
         args = { appdir = "~/Applications"; };
       }
+      "migsilva89/imark/imark"
     ];
     brews = [
       "bash"
