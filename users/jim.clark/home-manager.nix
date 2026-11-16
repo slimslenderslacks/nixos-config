@@ -319,6 +319,7 @@ in {
 
     initLua = ''
       vim.cmd([[source $HOME/.config/nvim/my-init.vim]])
+      vim.opt.wrap = true
     '';
 
     plugins = with pkgs; [
