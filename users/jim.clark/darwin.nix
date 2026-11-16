@@ -18,7 +18,16 @@
       "jganoff/tap"
     ];
     casks  = [
-      "ghostty"
+      # ghostty and cleanshot self-update (auto_updates true), so brew only
+      # upgrades them on activation when greedy is set.
+      {
+        name = "ghostty";
+        greedy = true;
+      }
+      {
+        name = "cleanshot";
+        greedy = true;
+      }
       "discord"
       "slack"
       "claude-code"
